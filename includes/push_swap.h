@@ -27,5 +27,6 @@ void	rotate_r(t_stack *a, t_stack *b);
 void	revrotate_a(t_stack *a);
 void	revrotate_b(t_stack *b);
 void	revrotate_r(t_stack *a, t_stack *b);
+void	print_stacks(t_stack *a, t_stack *b);
 
 #endif

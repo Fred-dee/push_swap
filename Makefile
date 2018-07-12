@@ -13,7 +13,9 @@ INC_PATH = ./includes/
 SRC_NAME =	get_next_line.c \
 			push_functions.c \
 			swap_functions.c \
-			push_swap.c
+			push_swap.c \
+			helper_functions.c \
+			rotate_functions.c
 
 OBJ_NAME = $(SRC_NAME:%.c=%.o)
 
