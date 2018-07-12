@@ -24,12 +24,27 @@ void	push_swap(t_stack *a, t_stack *b)
 	push_b(a, b);
 	push_b(a, b);
 	push_b(a, b);
+	swap_a(a);
+	rotate_a(a);
 	print_stacks(a, b);
 	ft_putendl("---------------------------------------------------------------");
 	ft_putendl("Exec ra rb (equivalent to rr):");
 	rotate_r(a, b);
 	print_stacks(a, b);
-
+	ft_putendl("---------------------------------------------------------------");
+	ft_putendl("Exec rra rrb (equivalent to rrr):");
+	revrotate_r(a, b);
+	print_stacks(a, b);
+	ft_putendl("---------------------------------------------------------------");
+	ft_putendl("Exec sa:");
+	swap_a(a);
+	print_stacks(a, b);
+	ft_putendl("---------------------------------------------------------------");
+	ft_putendl("Exec pa pa pa:");
+	push_a(a, b);
+	push_a(a, b);
+	push_a(a, b);
+	print_stacks(a, b);
 }
 
 int		is_valid(int ac, char *av[])
