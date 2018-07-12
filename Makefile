@@ -35,7 +35,7 @@ LFT = -lft
 all: $(NAME1)
 
 $(NAME1): $(OBJ) $(INC_PATH)
-	@make -C../libft/
+	@make -C./libft/
 	@$(CC) $(LDFLAGS) $(LFT) $(OBJ) -o $@
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
@@ -47,12 +47,12 @@ clean: cleanlib
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
 
 cleanlib:
-	@make clean -C ../libft/
+	@make clean -C ./libft/
 
 fclean: clean fcleanlib
 	@rm -f $(NAME1)
 
 fcleanlib:
-	@make fclean -C ../libft/
+	@make fclean -C ./libft/
 
 re : fclean all

@@ -17,11 +17,11 @@ int		is_valid(int ac, char *av[])
 {
 	int		tmp;
 	char	*str;
-	int		arr[ac];
+	int		arr[ac - 1];
 	int		i;
 
 	tmp = ac - 1;
-	while (tmp > 1)
+	while (tmp > 0)
 	{
 		str = av[tmp];
 		while(*str != '\0')
@@ -37,7 +37,6 @@ int		is_valid(int ac, char *av[])
 	while (tmp < ac - 2)
 	{
 		i = tmp + 1;
-		printf("%d\n", arr[tmp]);
 		while (i < ac - 1)
 			if(arr[tmp] == arr[i++])
 				return (FALSE);
