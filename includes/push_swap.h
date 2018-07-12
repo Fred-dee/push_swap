@@ -13,6 +13,8 @@
 #ifndef PUSH_SWAP_H_
 # define PUSH_SWAP_H_
 # include "stack.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 void	swap_a(t_stack *a);
 void	swap_b(t_stack *b);

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_functions.c                                   :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/12 10:55:33 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/12 10:55:48 by mdilapi          ###   ########.fr       */
+/*   Created: 2018/05/23 11:39:56 by mdilapi           #+#    #+#             */
+/*   Updated: 2018/06/30 10:09:32 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 32
+# define MIN_INT (-MI - 1)
+# define MI 2147483647
+# include "libft.h"
 
-void	push_a(t_stack *a, t_stack *b)
-{
-	if (ft_stackempty(b) == FALSE)
-		ft_stackpush(a, ft_stackpop(b));
-}
-
-void	push_b(t_stack *a, t_stack *b)
-{
-	if(ft_stackempty(a) == FALSE)
-		ft_stackpush(b, ft_stackpop(a));
-}
+int	get_next_line(const int fd, char **line);
+#endif
