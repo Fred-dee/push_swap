@@ -1,5 +1,5 @@
 NAME1 = push_swap
-
+NAME2 = checker
 # Path
 
 SRC_PATH = ./src/
@@ -13,7 +13,6 @@ INC_PATH = ./includes/
 SRC_NAME =	get_next_line.c \
 			push_functions.c \
 			swap_functions.c \
-			push_swap.c \
 			helper_functions.c \
 			rotate_functions.c
 
@@ -34,11 +33,15 @@ LDFLAGS = -L./libft/
 LFT = -lft
 
 
-all: $(NAME1)
+all: $(NAME1) $(NAME2)
 
-$(NAME1): $(OBJ) $(INC_PATH)
+$(NAME1): $(OBJ) $(INC_PATH) ./src/push_swap.c
 	@make -C./libft/
-	@$(CC) $(LDFLAGS) $(LFT) $(OBJ) -o $@
+	@$(CC) $(LDFLAGS) $(LFT) $(OBJ) ./src/push_swap.c -o $@
+
+$(NAME2): $(OBJ) $(INC_PATH) ./src/checker.c
+	@make -C./libft/
+	@$(CC) $(LDFLAGS) $(LFT) $(OBJ) ./src/checker.c -o $@
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
