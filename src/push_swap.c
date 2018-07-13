@@ -15,46 +15,8 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	/*
-	ft_putendl("---------------------------------------------------------------");
-	ft_putendl("Exec sa:");
-	swap_a(a);
-	print_stacks(a, b);
-	ft_putendl("---------------------------------------------------------------");
-	ft_putendl("Exec pb pb pb:");
-	push_b(a, b);
-	push_b(a, b);
-	push_b(a, b);
-	swap_a(a);
-	rotate_a(a);
-	print_stacks(a, b);
-	ft_putendl("---------------------------------------------------------------");
-	ft_putendl("Exec ra rb (equivalent to rr):");
-	rotate_r(a, b);
-	print_stacks(a, b);
-	ft_putendl("---------------------------------------------------------------");
-	ft_putendl("Exec rra rrb (equivalent to rrr):");
-	revrotate_r(a, b);
-	print_stacks(a, b);
-	ft_putendl("---------------------------------------------------------------");
-	ft_putendl("Exec sa:");
-	swap_a(a);
-	print_stacks(a, b);
-	ft_putendl("---------------------------------------------------------------");
-	ft_putendl("Exec pa pa pa:");
-	push_a(a, b);
-	push_a(a, b);
-	push_a(a, b);
-	print_stacks(a, b); */
-	/* input of 3 2 1 0 */
-	(void) a;
-	(void) b;
-	ft_putendl("rra");
-	ft_putendl("pb");
-	ft_putendl("sa");
-	ft_putendl("rra");
-	ft_putendl("pa");
 
+	
 }
 
 int		main(int ac, char *av[])

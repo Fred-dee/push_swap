@@ -12,6 +12,28 @@
 
 #include "../includes/push_swap.h"
 
+int		is_sorted(t_list *head)
+{
+	t_list	*tmp;
+	t_list	*prev;
+	int		*x;
+	int		*y;
+
+	tmp = head;
+	while (tmp->next != NULL)
+	{
+		prev = tmp;
+		tmp = tmp->next;
+
+		x = (int *)prev->content;
+		y = (int *)tmp->content;
+
+		if(*x > *y)
+			return(FALSE);
+	}
+	return (TRUE);
+}
+
 void	print_stacks(t_stack *a, t_stack *b)
 {
 	t_list	*head_a;
@@ -49,7 +71,7 @@ int		is_valid(int ac, char *av[])
 {
 	int		tmp;
 	char	*str;
-	int		arr[ac - 1];
+	long	arr[ac - 1];
 	int		i;
 
 	tmp = ac - 1;
@@ -62,7 +84,9 @@ int		is_valid(int ac, char *av[])
 				return (FALSE);
 			str++;
 		}
-		arr[tmp - 1] = ft_atoi(av[tmp]);
+		arr[tmp - 1] = ft_atol(av[tmp]);
+		if(arr[tmp - 1] > MAX_INT || arr[tmp - 1] < MIN_INT)
+			return(FALSE);
 		tmp--; 
 	}
 	tmp = 0;

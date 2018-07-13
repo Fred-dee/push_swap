@@ -13,27 +13,7 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-int		is_sorted(t_list *head)
-{
-	t_list	*tmp;
-	t_list	*prev;
-	int		*x;
-	int		*y;
 
-	tmp = head;
-	while (tmp->next != NULL)
-	{
-		prev = tmp;
-		tmp = tmp->next;
-
-		x = (int *)prev->content;
-		y = (int *)tmp->content;
-
-		if(*x > *y)
-			return(FALSE);
-	}
-	return (TRUE);
-}
 
 void	read_apply(t_stack *a, t_stack *b)
 {
@@ -53,7 +33,7 @@ void	read_apply(t_stack *a, t_stack *b)
 		else if (ft_strstr(str, "pb") != NULL)
 			push_b(a, b);
 		else if (ft_strstr(str, "ra") != NULL)
-			rotate_a(a);
+			ft_stackrevrotate(a);
 		else if (ft_strstr(str, "rb") != NULL)
 			rotate_b(b);
 		else if (ft_strstr(str, "rr") != NULL)
@@ -66,8 +46,6 @@ void	read_apply(t_stack *a, t_stack *b)
 			revrotate_r(a, b);
 		else if (ft_strstr(str, "quit"))
 			break;
-		printf("I got %s\n", str);
-		print_stacks(a, b);
 		free(str);
 	}
 }
@@ -79,7 +57,6 @@ int		main(int ac, char *av[])
 	int		count;
 	int		*x;
 
-	//printf("%s\n", av[ac - 1]);
 	if (ac > 1)
 	{
 		if(is_valid(ac, av) == FALSE)
@@ -99,7 +76,6 @@ int		main(int ac, char *av[])
 			}
 			free(x);
 			read_apply(a, b);
-			print_stacks(a, b);
 			if(is_sorted(a->head) && ft_stackempty(b) == TRUE)
 				ft_putendl("OK");
 			else ft_putendl("KO");
