@@ -15,6 +15,7 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
+	/*
 	ft_putendl("---------------------------------------------------------------");
 	ft_putendl("Exec sa:");
 	swap_a(a);
@@ -44,39 +45,16 @@ void	push_swap(t_stack *a, t_stack *b)
 	push_a(a, b);
 	push_a(a, b);
 	push_a(a, b);
-	print_stacks(a, b);
-}
+	print_stacks(a, b); */
+	/* input of 3 2 1 0 */
+	(void) a;
+	(void) b;
+	ft_putendl("rra");
+	ft_putendl("pb");
+	ft_putendl("sa");
+	ft_putendl("rra");
+	ft_putendl("pa");
 
-int		is_valid(int ac, char *av[])
-{
-	int		tmp;
-	char	*str;
-	int		arr[ac - 1];
-	int		i;
-
-	tmp = ac - 1;
-	while (tmp > 0)
-	{
-		str = av[tmp];
-		while(*str != '\0')
-		{
-			if(ft_isdigit(*str) == FALSE)
-				return (FALSE);
-			str++;
-		}
-		arr[tmp - 1] = ft_atoi(av[tmp]);
-		tmp--; 
-	}
-	tmp = 0;
-	while (tmp < ac - 2)
-	{
-		i = tmp + 1;
-		while (i < ac - 1)
-			if(arr[tmp] == arr[i++])
-				return (FALSE);
-		tmp++;
-	}
-	return (TRUE);
 }
 
 int		main(int ac, char *av[])
@@ -90,7 +68,7 @@ int		main(int ac, char *av[])
 	{
 		if(is_valid(ac, av) == FALSE)
 		{
-			ft_putendl("Error");
+			ft_putendl_fd("Error", 2);
 		}
 		else
 		{
@@ -104,9 +82,10 @@ int		main(int ac, char *av[])
 				ft_stackpush(a, ft_lstnew(x, sizeof(x)));
 			}
 			free(x);
-			print_stacks(a, b);
+		//	print_stacks(a, b);
 			push_swap(a, b);
 		}
 	}
 	return (0);
 }
+
