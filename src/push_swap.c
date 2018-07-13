@@ -15,8 +15,8 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-
-	
+	(void) a;
+	(void) b;
 }
 
 int		main(int ac, char *av[])
@@ -44,7 +44,6 @@ int		main(int ac, char *av[])
 				ft_stackpush(a, ft_lstnew(x, sizeof(x)));
 			}
 			free(x);
-		//	print_stacks(a, b);
 			push_swap(a, b);
 		}
 	}

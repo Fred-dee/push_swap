@@ -12,6 +12,15 @@
 
 #include "../includes/push_swap.h"
 
+int		int_cmp(int *a, int *b)
+{
+	if(*a == *b)
+		return (0);
+	if(*a > *b)
+		return (1);
+	return (-1)
+}
+
 int		is_sorted(t_list *head)
 {
 	t_list	*tmp;
