@@ -74,6 +74,7 @@ int						ft_isupper(int c);
 int						ft_tolower(int c);
 int						ft_toupper(int c);
 int						ft_atoi(const char *str);
+long					ft_atol(const char *str);
 int						ft_strcmp(const char *s1, const char *s2);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 char					*ft_itoa(int n);

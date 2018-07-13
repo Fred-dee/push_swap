@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H_
 # include "stack.h"
 # include "get_next_line.h"
+# define MIN_INT (-MI - 1)
+# define MAX_INT 2147483647
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -30,5 +32,6 @@ void	revrotate_b(t_stack *b);
 void	revrotate_r(t_stack *a, t_stack *b);
 void	print_stacks(t_stack *a, t_stack *b);
 int		is_valid(int ac, char *av[]);
+int		is_sorted(t_list *head);
 
 #endif
