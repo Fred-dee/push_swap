@@ -1,5 +1,5 @@
-NAME1 = push_swap
-NAME2 = checker
+NAME1 = push_swap.out
+NAME2 = checker.out
 # Path
 
 SRC_PATH = ./src/
@@ -24,7 +24,7 @@ SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -g -Wall -Werror -Wextra
 
 CC = gcc $(FLAGS)
 
@@ -35,13 +35,13 @@ LFT = -lft
 
 all: $(NAME1) $(NAME2)
 
-$(NAME1): $(OBJ) $(INC_PATH) ./src/push_swap.c
+$(NAME1): $(OBJ) $(INC_PATH) ./src_main/push_swap.c
 	@make -C./libft/
-	@$(CC) $(LDFLAGS) $(LFT) $(OBJ) ./src/push_swap.c -o $@
+	$(CC) ./src_main/push_swap.c $(OBJ)  $(LDFLAGS) $(LFT)  -o $@
 
-$(NAME2): $(OBJ) $(INC_PATH) ./src/checker.c
+$(NAME2): $(OBJ) $(INC_PATH) ./src_main/checker.c
 	@make -C./libft/
-	@$(CC) $(LDFLAGS) $(LFT) $(OBJ) ./src/checker.c -o $@
+	$(CC) ./src_main/checker.c $(OBJ) $(LDFLAGS) $(LFT) -o $@ 
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
@@ -56,6 +56,7 @@ cleanlib:
 
 fclean: clean fcleanlib
 	@rm -f $(NAME1)
+	@rm -f $(NAME2)
 
 fcleanlib:
 	@make fclean -C ./libft/

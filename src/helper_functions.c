@@ -12,13 +12,33 @@
 
 #include "../includes/push_swap.h"
 
+t_list	*stack_min(t_stack *s)
+{
+	t_list *tmp;
+	t_list *ret;
+
+	ret = NULL;
+	if(s != NULL)
+	{
+		tmp = s->head;
+		ret = tmp;
+		while (tmp != NULL)
+		{
+			if(*((int *)tmp->content) < *((int *)ret->content))
+				ret = tmp;
+			tmp = tmp->next;
+		}
+	}
+	return (ret);
+}
+
 int		int_cmp(int *a, int *b)
 {
 	if(*a == *b)
 		return (0);
 	if(*a > *b)
 		return (1);
-	return (-1)
+	return (-1);
 }
 
 int		is_sorted(t_list *head)
