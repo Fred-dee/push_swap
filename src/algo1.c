@@ -12,12 +12,52 @@
 
 #include "../includes/push_swap.h"
 
-char	*algo1(t_stack *a, t_stack *b)
+static void	test_1(char **ret, t_list *tmp, t_stack *a)
 {
-	t_list *tmp;
-	t_list *tail;
 	t_list *second;
 	t_list *tsecond;
+
+	second = ft_stacktop(a)->next;
+	tsecond = ft_lstat(a->head, a->size - 2);
+	if(*((int *)ft_lstgettail(a->head)->content) == *((int *)tmp->content))
+	{
+		revrotate_a(a);
+		swapnfree(ret, ft_strjoin(*ret, "rra\n"));
+	}
+	else if(*((int *)second->content) ==  *((int *)tmp->content))
+	{
+		swap_a(a);
+		swapnfree(ret, ft_strjoin(*ret, "sa\n"));
+	}
+	else if(tsecond != NULL && *((int *)tsecond->content) == *((int *)tmp->content))
+	{
+		revrotate_a(a);
+		swapnfree(ret, ft_strjoin(*ret, "rra\n"));
+	}
+	else
+	{
+		rotate_a(a);
+		swapnfree(ret, ft_strjoin(*ret, "ra\n"));
+	}
+}
+
+static void	test_2(char **ret, t_stack *a, t_stack *b)
+{
+	if (is_sorted(a->head) == FALSE && a->size == 2)
+	{
+		rotate_a(a);
+		swapnfree(ret, ft_strjoin(*ret, "ra\n"));
+	}
+	while(ft_stackempty(b) == FALSE)
+	{
+		push_a(a, b);
+		swapnfree(ret, ft_strjoin(*ret, "pa\n"));
+	}
+}
+
+char		*algo1(t_stack *a, t_stack *b)
+{
+	t_list *tmp;
 	char	*ret;
 
 	ret = ft_strnew(1);
@@ -26,29 +66,7 @@ char	*algo1(t_stack *a, t_stack *b)
 		tmp = stack_min(a);
 		while (*((int *)ft_stacktop(a)->content) !=  *((int *)tmp->content))
 		{
-			tail = ft_lstgettail(a->head);
-			second = ft_stacktop(a)->next;
-			tsecond = ft_lstat(a->head, a->size - 2);
-			if(*((int *)tail->content) == *((int *)tmp->content))
-			{
-				revrotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "rra\n"));
-			}
-			else if(*((int *)second->content) ==  *((int *)tmp->content))
-			{
-				swap_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "sa\n"));
-			}
-			else if(tsecond != NULL && *((int *)tsecond->content) == *((int *)tmp->content))
-			{
-				revrotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "rra\n"));
-			}
-			else
-			{
-				rotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "ra\n"));
-			}
+			test_1(&ret, tmp, a);
 		}
 		if(is_sorted(a->head) == FALSE)
 		{
@@ -56,15 +74,6 @@ char	*algo1(t_stack *a, t_stack *b)
 			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
 		}
 	}
-	if (is_sorted(a->head) == FALSE && a->size == 2)
-	{
-		rotate_a(a);
-		swapnfree(&ret, ft_strjoin(ret, "ra\n"));
-	}
-	while(ft_stackempty(b) == FALSE)
-	{
-		push_a(a, b);
-		swapnfree(&ret, ft_strjoin(ret, "pa\n"));
-	}
+	test_2(&ret, a, b);
 	return (ret);
 }
