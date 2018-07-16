@@ -13,6 +13,19 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
+void	select_move(t_stack *a, t_stack *b, char *str)
+{
+	if(ft_strcmp(str, "sa") == 0)
+		swap_a(a);
+	else if (ft_strcmp(str, "sb") == 0)
+		swap_b(b);
+	else if (ft_strcmp(str, "ss") == 0)
+		swap_s(a, b);
+	else if (ft_strcmp(str, "pa") == 0)
+		push_a(a, b);
+	else if (ft_strcmp(str, "pb") == 0)
+		push_b(a, b);
+}
 void	read_apply(t_stack *a, t_stack *b)
 {
 	char	*str;
@@ -20,17 +33,8 @@ void	read_apply(t_stack *a, t_stack *b)
 
 	while((read_ret = get_next_line(0, &str)) > 0)
 	{
-		if(ft_strcmp(str, "sa") == 0)
-			swap_a(a);
-		else if (ft_strcmp(str, "sb") == 0)
-			swap_b(b);
-		else if (ft_strcmp(str, "ss") == 0)
-			swap_s(a, b);
-		else if (ft_strcmp(str, "pa") == 0)
-			push_a(a, b);
-		else if (ft_strcmp(str, "pb") == 0)
-			push_b(a, b);
-		else if (ft_strcmp(str, "ra") == 0)
+		select_move(a, b, str);
+		if (ft_strcmp(str, "ra") == 0)
 			rotate_a(a);
 		else if (ft_strcmp(str, "rb") == 0)
 			rotate_b(b);
@@ -45,7 +49,6 @@ void	read_apply(t_stack *a, t_stack *b)
 		else if (ft_strcmp(str, "quit") == 0)
 			break;
 		free(str);
-		//print_stacks(a, b);
 	}
 }
 

@@ -49,8 +49,11 @@ void	push_swap(t_stack *a, t_stack *b)
 				ft_putendl("ra");
 			}
 		}
-		push_b(a, b);
-		ft_putendl("pb");
+		if(is_sorted(a->head) == FALSE)
+		{
+			push_b(a, b);
+			ft_putendl("pb");
+		}
 	}
 	if (is_sorted(a->head) == FALSE && a->size == 2)
 	{
@@ -109,7 +112,6 @@ int		main(int ac, char **av)
 			split = av + 1;
 			work(ac - 2, split);
 		}
-
 	}
 	return (0);
 }

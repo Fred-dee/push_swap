@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/12 14:37:20 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/12 14:37:24 by mdilapi          ###   ########.fr       */
+/*   Created: 2018/07/16 12:15:43 by mdilapi           #+#    #+#             */
+/*   Updated: 2018/07/16 12:15:48 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 t_list	*stack_min(t_stack *s)
 {
@@ -18,13 +19,13 @@ t_list	*stack_min(t_stack *s)
 	t_list *ret;
 
 	ret = NULL;
-	if(s != NULL)
+	if (s != NULL)
 	{
 		tmp = s->head;
 		ret = tmp;
 		while (tmp != NULL)
 		{
-			if(*((int *)tmp->content) < *((int *)ret->content))
+			if (*((int *)tmp->content) < *((int *)ret->content))
 				ret = tmp;
 			tmp = tmp->next;
 		}
@@ -44,12 +45,10 @@ int		is_sorted_desc(t_list *head)
 	{
 		prev = tmp;
 		tmp = tmp->next;
-
 		x = (int *)prev->content;
 		y = (int *)tmp->content;
-
-		if(*x < *y)
-			return(FALSE);
+		if (*x < *y)
+			return (FALSE);
 	}
 	return (TRUE);
 }
@@ -66,12 +65,10 @@ int		is_sorted(t_list *head)
 	{
 		prev = tmp;
 		tmp = tmp->next;
-
 		x = (int *)prev->content;
 		y = (int *)tmp->content;
-
-		if(*x > *y)
-			return(FALSE);
+		if (*x > *y)
+			return (FALSE);
 	}
 	return (TRUE);
 }
@@ -89,15 +86,16 @@ void	print_stacks(t_stack *a, t_stack *b)
 	head_b = ft_stacktop(b);
 	while (head_b != NULL || head_a != NULL)
 	{
-		if(head_a != NULL)
+		if (head_a != NULL)
 		{
 			tmp_a = (int *)head_a->content;
 			ft_putnbr(*tmp_a);
-			ft_putchar(' ');
+			ft_putchar('\t');
 			head_a = head_a->next;
 		}
-		ft_putchar(' ');
-		if(head_b != NULL)
+		else
+			ft_putchar('\t');
+		if (head_b != NULL)
 		{
 			tmp_b = (int *)head_b->content;
 			ft_putnbr(*tmp_b);
@@ -105,39 +103,41 @@ void	print_stacks(t_stack *a, t_stack *b)
 		}
 		ft_putchar('\n');
 	}
-	ft_putendl("_ _");
-	ft_putendl("a b");
+	ft_putendl("_\t_");
+	ft_putendl("a\tb\n");
 }
 
 int		is_valid(int ac, char *av[])
 {
 	int		tmp;
 	char	*str;
-	long	arr[ac - 1];
+	long	arr[ac];
 	int		i;
 
-	tmp = ac - 1;
-	while (tmp > 0)
+	tmp = ac;
+	while (tmp >= 0)
 	{
 		str = av[tmp];
-		while(*str != '\0')
+		while (*str != '\0')
 		{
-			if(ft_isdigit(*str) == FALSE)
+			if (ft_isdigit(*str) == FALSE)
 				return (FALSE);
 			str++;
 		}
-		arr[tmp - 1] = ft_atol(av[tmp]);
-		if(arr[tmp - 1] > MAX_INT || arr[tmp - 1] < MIN_INT)
-			return(FALSE);
-		tmp--; 
+		arr[tmp] = ft_atol(av[tmp]);
+		if (arr[tmp] > MAX_INT || arr[tmp] < MIN_INT)
+			return (FALSE);
+		tmp--;
 	}
 	tmp = 0;
-	while (tmp < ac - 2)
+	while (tmp < ac - 1)
 	{
 		i = tmp + 1;
-		while (i < ac - 1)
-			if(arr[tmp] == arr[i++])
+		while (i <= ac)
+		{
+			if (arr[tmp] == arr[i++])
 				return (FALSE);
+		}
 		tmp++;
 	}
 	return (TRUE);
