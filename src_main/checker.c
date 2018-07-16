@@ -31,7 +31,7 @@ void	read_apply(t_stack *a, t_stack *b)
 		else if (ft_strstr(str, "pb") != NULL)
 			push_b(a, b);
 		else if (ft_strstr(str, "ra") != NULL)
-			ft_stackrevrotate(a);
+			rotate_a(a);
 		else if (ft_strstr(str, "rb") != NULL)
 			rotate_b(b);
 		else if (ft_strstr(str, "rr") != NULL)
@@ -48,36 +48,56 @@ void	read_apply(t_stack *a, t_stack *b)
 	}
 }
 
-int		main(int ac, char *av[])
+void	work(int count, char **av, t_stack *a)
 {
+	int		*x;
+
+	if(is_valid(count, av) == FALSE)
+	{
+		ft_putendl_fd("Error", 2);
+	}
+	else
+	{
+		x = (int *)malloc(sizeof(int));
+		while (count >= 0)
+		{
+			*x = ft_atoi(av[count--]);
+			ft_stackpush(a, ft_lstnew(x, sizeof(x)));
+		}
+		free(x);
+	}
+}
+
+int		main(int ac, char **av)
+{
+	int		count;
+	char	**split;
 	t_stack *a;
 	t_stack *b;
-	int		count;
-	int		*x;
 
 	if (ac > 1)
 	{
-		if(is_valid(ac, av) == FALSE)
+		b = ft_stacknew(NULL, 0);
+		a = ft_stacknew(NULL, 0);
+		if(ac == 2)
 		{
-			ft_putendl_fd("Error", 2);
+			count = 0;
+			split = ft_strsplit(av[1], ' ');
+			while (split[count] != '\0')
+				count++;
+			work(count - 1, split, a);
 		}
 		else
 		{
-			b = ft_stacknew(NULL, 0);
-			a = ft_stacknew(NULL, 0);
-			count = ac - 1;
-			x = (int *)malloc(sizeof(int));
-			while (count > 0)
-			{
-				*x = ft_atoi(av[count--]);
-				ft_stackpush(a, ft_lstnew(x, sizeof(x)));
-			}
-			free(x);
-			read_apply(a, b);
-			if(is_sorted(a->head) && ft_stackempty(b) == TRUE)
-				ft_putendl("OK");
-			else ft_putendl("KO");
+			split = av + 1;
+			work(ac - 2, split, a);
 		}
+		read_apply(a, b);
+		//print_stacks(a, b);
+		if(is_sorted(a->head) && ft_stackempty(b) == TRUE)
+			ft_putendl("OK");
+		else ft_putendl("KO");
+
 	}
 	return (0);
 }

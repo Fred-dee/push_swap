@@ -15,14 +15,10 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	//(void) a;
-	//(void) b;
-
 	t_list *tmp;
-	while (ft_stackempty(a) == FALSE)
+	while (a->size > 1)
 	{
 		tmp = stack_min(a);
-		//printf(" The min is: %d\n", *((int *)tmp->content));
 		while (*((int *)ft_stacktop(a)->content) !=  *((int *)tmp->content))
 		{
 			rotate_a(a);
@@ -36,37 +32,54 @@ void	push_swap(t_stack *a, t_stack *b)
 		push_a(a, b);
 		ft_putendl("pa");
 	}
-	print_stacks(a, b);
-
 }
 
-int		main(int ac, char *av[])
+void	work(int count, char **av)
 {
 	t_stack *a;
 	t_stack *b;
-	int		count;
 	int		*x;
+
+	if(is_valid(count, av) == FALSE)
+	{
+		ft_putendl_fd("Error", 2);
+	}
+	else
+	{
+		b = ft_stacknew(NULL, 0);
+		a = ft_stacknew(NULL, 0);
+		x = (int *)malloc(sizeof(int));
+		while (count >= 0)
+		{
+			*x = ft_atoi(av[count--]);
+			ft_stackpush(a, ft_lstnew(x, sizeof(x)));
+		}
+		free(x);
+		push_swap(a, b);
+	}
+}
+
+int		main(int ac, char **av)
+{
+	int		count;
+	char	**split;
 
 	if (ac > 1)
 	{
-		if(is_valid(ac, av) == FALSE)
+		if(ac == 2)
 		{
-			ft_putendl_fd("Error", 2);
+			count = 0;
+			split = ft_strsplit(av[1], ' ');
+			while (split[count] != '\0')
+				count++;
+			work(count - 1, split);
 		}
 		else
 		{
-			b = ft_stacknew(NULL, 0);
-			a = ft_stacknew(NULL, 0);
-			count = ac - 1;
-			x = (int *)malloc(sizeof(int));
-			while (count > 0)
-			{
-				*x = ft_atoi(av[count--]);
-				ft_stackpush(a, ft_lstnew(x, sizeof(x)));
-			}
-			free(x);
-			push_swap(a, b);
+			split = av + 1;
+			work(ac - 2, split);
 		}
+
 	}
 	return (0);
 }
