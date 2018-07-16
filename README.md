@@ -39,4 +39,22 @@ The project uses work from the <a> href="https://github.com/Fred-Dee/libft> libf
 		<td>Shift up all elements of stack b by 1. <br>
 			The first element becomes the last one</td>
 	</tr>
+	<tr>
+		<td>rotate r</td>
+		<td>rotate a and b at the same time</td>
+	</tr>
+	<tr>
+		<td>reverse rotate a</td>
+		<td>Shift down all elements of stack a by 1. <br>
+			The last element becomes the first one</td>
+	</tr>
+	<tr>
+		<td>reverse rotate b</td>
+		<td>Shift down all elements of stack b by 1. <br>
+			The last element becomes the first one</td>
+	</tr>
+	<tr>
+		<td>reverse rotate r</td>
+		<td>reverse rotate a and b at the same time</td>
+	</tr>
 </table>
