@@ -10,10 +10,12 @@ INC_PATH = ./includes/
 
 # Name
 
-SRC_NAME =	get_next_line.c \
+SRC_NAME =	algo1.c \
+			get_next_line.c \
 			push_functions.c \
 			swap_functions.c \
 			helper_functions.c \
+			helper_functions2.c \
 			rotate_functions.c \
 
 OBJ_NAME = $(SRC_NAME:%.c=%.o)
@@ -36,15 +38,15 @@ all: $(NAME1) $(NAME2)
 
 $(NAME1): $(OBJ) $(INC_PATH) ./src_main/push_swap.c
 	@make -C./libft/
-	$(CC) -o $@ $(LDFLAGS) $(LFT) $(OBJ) ./src_main/push_swap.c 
+	@$(CC) -o $@ $(LDFLAGS) $(LFT) $(OBJ) ./src_main/push_swap.c 
 
 $(NAME2): $(OBJ) $(INC_PATH) ./src_main/checker.c
 	@make -C./libft/
-	$(CC)  -o $@ $(LDFLAGS) $(LFT) $(OBJ) ./src_main/checker.c
+	@$(CC)  -o $@ $(LDFLAGS) $(LFT) $(OBJ) ./src_main/checker.c
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) -I$(INC_PATH) -o $@ -c $<
+	@$(CC) -I$(INC_PATH) -o $@ -c $<
 
 clean: cleanlib
 	/bin/rm -rf $(OBJ)
