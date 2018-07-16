@@ -33,6 +33,7 @@ void	revrotate_r(t_stack *a, t_stack *b);
 void	print_stacks(t_stack *a, t_stack *b);
 int		is_valid(int ac, char *av[]);
 int		is_sorted(t_list *head);
+int		is_sorted_desc(t_list *head);
 int		int_cmp(int *a, int *b);
 t_list	*stack_min(t_stack *s);
 

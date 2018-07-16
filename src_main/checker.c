@@ -20,31 +20,32 @@ void	read_apply(t_stack *a, t_stack *b)
 
 	while((read_ret = get_next_line(0, &str)) > 0)
 	{
-		if(ft_strstr(str, "sa") != NULL)
+		if(ft_strcmp(str, "sa") == 0)
 			swap_a(a);
-		else if (ft_strstr(str, "sb") != NULL)
+		else if (ft_strcmp(str, "sb") == 0)
 			swap_b(b);
-		else if (ft_strstr(str, "ss") != NULL)
+		else if (ft_strcmp(str, "ss") == 0)
 			swap_s(a, b);
-		else if (ft_strstr(str, "pa") != NULL)
+		else if (ft_strcmp(str, "pa") == 0)
 			push_a(a, b);
-		else if (ft_strstr(str, "pb") != NULL)
+		else if (ft_strcmp(str, "pb") == 0)
 			push_b(a, b);
-		else if (ft_strstr(str, "ra") != NULL)
+		else if (ft_strcmp(str, "ra") == 0)
 			rotate_a(a);
-		else if (ft_strstr(str, "rb") != NULL)
+		else if (ft_strcmp(str, "rb") == 0)
 			rotate_b(b);
-		else if (ft_strstr(str, "rr") != NULL)
+		else if (ft_strcmp(str, "rr") == 0)
 			rotate_r(a, b);
-		else if (ft_strstr(str, "rra") != NULL)
+		else if (ft_strcmp(str, "rra") == 0)
 			revrotate_a(a);
-		else if (ft_strstr(str, "rrb") != NULL)
+		else if (ft_strcmp(str, "rrb") == 0)
 			revrotate_b(b);
-		else if (ft_strstr(str, "rrr") != NULL)
+		else if (ft_strcmp(str, "rrr") == 0)
 			revrotate_r(a, b);
-		else if (ft_strstr(str, "quit"))
+		else if (ft_strcmp(str, "quit") == 0)
 			break;
 		free(str);
+		//print_stacks(a, b);
 	}
 }
 
@@ -93,11 +94,9 @@ int		main(int ac, char **av)
 			work(ac - 2, split, a);
 		}
 		read_apply(a, b);
-		//print_stacks(a, b);
 		if(is_sorted(a->head) && ft_stackempty(b) == TRUE)
 			ft_putendl("OK");
 		else ft_putendl("KO");
-
 	}
 	return (0);
 }

@@ -32,13 +32,26 @@ t_list	*stack_min(t_stack *s)
 	return (ret);
 }
 
-int		int_cmp(int *a, int *b)
+int		is_sorted_desc(t_list *head)
 {
-	if(*a == *b)
-		return (0);
-	if(*a > *b)
-		return (1);
-	return (-1);
+	t_list	*tmp;
+	t_list	*prev;
+	int		*x;
+	int		*y;
+
+	tmp = head;
+	while (tmp->next != NULL)
+	{
+		prev = tmp;
+		tmp = tmp->next;
+
+		x = (int *)prev->content;
+		y = (int *)tmp->content;
+
+		if(*x < *y)
+			return(FALSE);
+	}
+	return (TRUE);
 }
 
 int		is_sorted(t_list *head)

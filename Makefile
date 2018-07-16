@@ -14,7 +14,7 @@ SRC_NAME =	get_next_line.c \
 			push_functions.c \
 			swap_functions.c \
 			helper_functions.c \
-			rotate_functions.c
+			rotate_functions.c \
 
 OBJ_NAME = $(SRC_NAME:%.c=%.o)
 
@@ -32,24 +32,22 @@ LDFLAGS = -L./libft/
 
 LFT = -lft
 
-
-all: $(NAME1) $(NAME2) ./src_main/push_swap.c ./src_main/checker.c
-	@make -C./libft/
+all: $(NAME1) $(NAME2)
 
 $(NAME1): $(OBJ) $(INC_PATH) ./src_main/push_swap.c
 	@make -C./libft/
-	@$(CC) $(LDFLAGS) $(LFT) $(OBJ) ./src_main/push_swap.c -o $@
+	$(CC) -o $@ $(LDFLAGS) $(LFT) $(OBJ) ./src_main/push_swap.c 
 
 $(NAME2): $(OBJ) $(INC_PATH) ./src_main/checker.c
 	@make -C./libft/
-	@$(CC) $(LDFLAGS) $(LFT) $(OBJ) ./src_main/checker.c -o $@
+	$(CC)  -o $@ $(LDFLAGS) $(LFT) $(OBJ) ./src_main/checker.c
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) -I$(INC_PATH) -o $@ -c $<
+	$(CC) -I$(INC_PATH) -o $@ -c $<
 
 clean: cleanlib
-	/bin/rm -f $(OBJ)
+	/bin/rm -rf $(OBJ)
 	/bin/rm -rf $(OBJ_PATH) 2> /dev/null || true
 
 cleanlib:
