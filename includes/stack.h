@@ -23,6 +23,7 @@ typedef struct s_stack
 }				t_stack;
 
 t_list			*ft_stacktop(t_stack *s);
+void			ft_stackdel(t_stack *s);
 int				ft_stackempty(t_stack *s);
 size_t			ft_stacksize(t_stack *s);
 void			ft_stackpush(t_stack *s, t_list *elem);

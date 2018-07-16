@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H_
 # include "stack.h"
 # include "get_next_line.h"
-# define MIN_INT (-MI - 1)
 # define MAX_INT 2147483647
 # include <stdlib.h>
 # include <unistd.h>
@@ -36,5 +35,6 @@ int		is_sorted(t_list *head);
 int		is_sorted_desc(t_list *head);
 int		int_cmp(int *a, int *b);
 t_list	*stack_min(t_stack *s);
-
+void	swapnfree(char **var, char *new_val);
+char	*algo1(t_stack *a, t_stack *b);
 #endif

@@ -15,56 +15,10 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	t_list *tmp;
-	t_list *tail;
-	t_list *second;
-	t_list *tsecond;
+	char *ret;
 
-	while (a->size > 2 && is_sorted(a->head) == FALSE)
-	{
-		tmp = stack_min(a);
-		while (*((int *)ft_stacktop(a)->content) !=  *((int *)tmp->content))
-		{
-			tail = ft_lstgettail(a->head);
-			second = ft_stacktop(a)->next;
-			tsecond = ft_lstat(a->head, a->size - 2);
-			if(*((int *)tail->content) == *((int *)tmp->content))
-			{
-				revrotate_a(a);
-				ft_putendl("rra");
-			}
-			else if(*((int *)second->content) ==  *((int *)tmp->content))
-			{
-				swap_a(a);
-				ft_putendl("sa");
-			}
-			else if(tsecond != NULL && *((int *)tsecond->content) == *((int *)tmp->content))
-			{
-				revrotate_a(a);
-				ft_putendl("rra");
-			}
-			else
-			{
-				rotate_a(a);
-				ft_putendl("ra");
-			}
-		}
-		if(is_sorted(a->head) == FALSE)
-		{
-			push_b(a, b);
-			ft_putendl("pb");
-		}
-	}
-	if (is_sorted(a->head) == FALSE && a->size == 2)
-	{
-		rotate_a(a);
-		ft_putendl("ra");
-	}
-	while(ft_stackempty(b) == FALSE)
-	{
-		push_a(a, b);
-		ft_putendl("pa");
-	}
+	ret = algo1(a, b);
+	ft_putstr(ret);
 }
 
 void	work(int count, char **av)
