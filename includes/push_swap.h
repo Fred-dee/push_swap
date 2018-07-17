@@ -35,6 +35,9 @@ int		is_sorted(t_list *head);
 int		is_sorted_desc(t_list *head);
 int		int_cmp(int *a, int *b);
 t_list	*stack_min(t_stack *s);
+t_list	*stack_max(t_stack *s);
 void	swapnfree(char **var, char *new_val);
 char	*algo1(t_stack *a, t_stack *b);
+char	*algo2(t_stack *a, t_stack *b);
+int		char_count(const char *s, char c);
 #endif

@@ -36,3 +36,23 @@ int		char_count(const char *s, char c)
 	}
 	return (ret);
 }
+
+t_list	*stack_max(t_stack *s)
+{
+	t_list *tmp;
+	t_list *ret;
+
+	ret = NULL;
+	if (s != NULL)
+	{
+		tmp = s->head;
+		ret = tmp;
+		while (tmp != NULL)
+		{
+			if (*((int *)tmp->content) > *((int *)ret->content))
+				ret = tmp;
+			tmp = tmp->next;
+		}
+	}
+	return (ret);
+}

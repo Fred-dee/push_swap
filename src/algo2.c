@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo1.c                                            :+:      :+:    :+:   */
+/*   algo2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/16 15:04:26 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/16 15:04:39 by mdilapi          ###   ########.fr       */
+/*   Created: 2018/07/17 08:53:14 by mdilapi           #+#    #+#             */
+/*   Updated: 2018/07/17 08:53:15 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 static void	test_1(char **ret, t_list *tmp, t_stack *a)
 {
@@ -43,10 +44,41 @@ static void	test_1(char **ret, t_list *tmp, t_stack *a)
 
 static void	test_2(char **ret, t_stack *a, t_stack *b)
 {
-	if (is_sorted(a->head) == FALSE && a->size == 2)
+	t_list	*tail;
+	t_list	*second;
+	t_list	*max;
+
+	if (is_sorted(a->head) == FALSE && a->size == 3)
 	{
-		rotate_a(a);
-		swapnfree(ret, ft_strjoin(*ret, "ra\n"));
+		tail = ft_lstgettail(a->head);
+		second = a->head->next;
+		max = stack_max(a);
+
+		if (*((int *)tail->content) == *((int *)max->content))
+		{
+			swap_a(a);
+			swapnfree(ret, ft_strjoin(*ret, "sa\n"));
+		}
+		else if (second != NULL && *((int *)second->content) == *((int *)max->content))
+		{
+			revrotate_a(a);
+			swapnfree(ret, ft_strjoin(*ret, "rra\n"));
+			if (*(int *)a->head->content > *(int *)a->head->next->content)
+			{
+				swap_a(a);
+				swapnfree(ret, ft_strjoin(*ret, "sa\n"));
+			}
+		}
+		else
+		{
+			rotate_a(a);
+			swapnfree(ret, ft_strjoin(*ret, "ra\n"));
+			if (*(int *)a->head->content > *(int *)a->head->next->content)
+			{
+				swap_a(a);
+				swapnfree(ret, ft_strjoin(*ret, "sa\n"));
+			}
+		}
 	}
 	while(ft_stackempty(b) == FALSE)
 	{
@@ -55,13 +87,13 @@ static void	test_2(char **ret, t_stack *a, t_stack *b)
 	}
 }
 
-char		*algo1(t_stack *a, t_stack *b)
+char		*algo2(t_stack *a, t_stack *b)
 {
 	t_list	*tmp;
 	char	*ret;
 
 	ret = ft_strnew(1);
-	while (a->size > 2 && is_sorted(a->head) == FALSE)
+	while (a->size > 3 && is_sorted(a->head) == FALSE)
 	{
 		tmp = stack_min(a);
 		while (*((int *)ft_stacktop(a)->content) != *((int *)tmp->content))
@@ -77,3 +109,4 @@ char		*algo1(t_stack *a, t_stack *b)
 	test_2(&ret, a, b);
 	return (ret);
 }
+
