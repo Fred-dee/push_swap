@@ -37,6 +37,19 @@ int		char_count(const char *s, char c)
 	return (ret);
 }
 
+int		contains_flags(int ac, char **av)
+{
+	while(ac > 0)
+	{
+		if(ft_strcmp(av[ac], "-v") == 0)
+		{
+			return(ac);
+		}
+		ac--;
+	}
+	return (-1);
+}
+
 t_list	*stack_max(t_stack *s)
 {
 	t_list *tmp;

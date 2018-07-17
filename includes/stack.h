@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H_
-# define STACK_H_
+#ifndef STACK_H
+# define STACK_H
 # include "libft.h"
 # define TRUE 1
 # define FALSE 0
 
-typedef struct s_stack
+typedef struct	s_stack
 {
 	t_list		*head;
 	size_t		size;
@@ -29,8 +29,8 @@ size_t			ft_stacksize(t_stack *s);
 void			ft_stackpush(t_stack *s, t_list *elem);
 t_list			*ft_stackpop(t_stack *s);
 t_stack			*ft_stacknew(void const *content, size_t content_size);
+t_stack			*ft_stackdup(t_stack *s);
 void			ft_stack_swap_top(t_stack *s);
 void			ft_stackrotate(t_stack *s);
 void			ft_stackrevrotate(t_stack *s);
-t_list			*ft_stackmax(t_stack *s, int (*cmp)(void *, void *));
 #endif

@@ -31,7 +31,7 @@ FLAGS = -Wall -Werror -Wextra
 
 CC = gcc $(FLAGS)
 
-LDFLAGS = -L./libft/
+LDFLAGS = -L ./libft/
 
 LFT = -lft
 

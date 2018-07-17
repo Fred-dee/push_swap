@@ -15,10 +15,26 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	char *ret;
+	char	*ret[2];
+	int		i;
+	int		choice;
+	int		min;
 
-	ret = algo1(a, b);
-	ft_putstr(ret);
+	i = 0;
+	choice = 0;
+	ret[0] = algo1(ft_stackdup(a), ft_stackdup(b));
+	ret[1] = algo2(ft_stackdup(a), ft_stackdup(b));
+	min = char_count(ret[0], '\n');
+	while (i < 2)
+	{
+		if(char_count(ret[i], '\n') < min)
+		{
+			choice = i;
+			min = char_count(ret[i], '\n');
+		}
+		i++;
+	}
+	ft_putstr(ret[choice]);
 }
 
 void	work(int count, char **av)
@@ -49,6 +65,7 @@ void	work(int count, char **av)
 int		main(int ac, char **av)
 {
 	int		count;
+	int		debugging;
 	char	**split;
 
 	if (ac > 1)
