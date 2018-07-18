@@ -65,7 +65,7 @@ void	work(int count, char **av)
 int		main(int ac, char **av)
 {
 	int		count;
-	int		debugging;
+	//int		debugging;
 	char	**split;
 
 	if (ac > 1)

@@ -78,11 +78,19 @@ int		main(int ac, char **av)
 	char	**split;
 	t_stack *a;
 	t_stack *b;
+	t_flags	flag;
+	int		offset;
 
 	if (ac > 1)
 	{
 		b = ft_stacknew(NULL, 0);
 		a = ft_stacknew(NULL, 0);
+		flag.v = 0;
+		flag.c = 0;
+		offset = 0;
+		if (ft_strchr(av[1], ' ') != NULL)
+			printf("The spaces are not automatically trimmed\n");
+		contains_flags(ac - 1, av, &flag);
 		if(ac == 2)
 		{
 			count = 0;
