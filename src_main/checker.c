@@ -26,7 +26,7 @@ void	select_move(t_stack *a, t_stack *b, char *str)
 	else if (ft_strcmp(str, "pb") == 0)
 		push_b(a, b);
 }
-void	read_apply(t_stack *a, t_stack *b)
+void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 {
 	char	*str;
 	int		read_ret;
@@ -48,6 +48,8 @@ void	read_apply(t_stack *a, t_stack *b)
 			revrotate_r(a, b);
 		else if (ft_strcmp(str, "quit") == 0)
 			break;
+		if (f->v == 1 && f->c == 0)
+			print_stacks(a, b);
 		free(str);
 	}
 }
@@ -88,23 +90,31 @@ int		main(int ac, char **av)
 		flag.v = 0;
 		flag.c = 0;
 		offset = 0;
-		if (ft_strchr(av[1], ' ') != NULL)
-			printf("The spaces are not automatically trimmed\n");
 		contains_flags(ac - 1, av, &flag);
-		if(ac == 2)
+		if (flag.v > 0)
+		{
+			offset++;
+			ft_putstr_clr(LIGHT_GREEN, "Debugging mode enabled\n");
+		}
+		if (flag.c > 0)
+		{
+			offset++;
+			ft_putstr_clr(LIGHT_GREEN, "Colour mode enabled\n");
+		}
+		if(ac == 2 + offset)
 		{
 			count = 0;
-			split = ft_strsplit(av[1], ' ');
+			split = ft_strsplit(av[1 + offset], ' ');
 			while (split[count] != '\0')
 				count++;
 			work(count - 1, split, a);
 		}
 		else
 		{
-			split = av + 1;
-			work(ac - 2, split, a);
+			split = av + 1 + offset;
+			work(ac - 2 - offset, split, a);
 		}
-		read_apply(a, b);
+		read_apply(a, b, &flag);
 		if(is_sorted(a->head) && ft_stackempty(b) == TRUE)
 			ft_putendl("OK");
 		else ft_putendl("KO");
