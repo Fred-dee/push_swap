@@ -1,5 +1,5 @@
-NAME1 = push_swap.out
-NAME2 = checker.out
+NAME1 = push_swap
+NAME2 = checker
 # Path
 
 SRC_PATH = ./src/

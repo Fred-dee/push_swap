@@ -50,6 +50,11 @@ void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 			break;
 		if (f->v == 1 && f->c == 0)
 			print_stacks(a, b);
+		if(f->v == 1 && f->c == 1)
+		{
+			print_stacks(a, b);
+			//print_stacks_clr(a, b, str);
+		}
 		free(str);
 	}
 }
@@ -94,12 +99,15 @@ int		main(int ac, char **av)
 		if (flag.v > 0)
 		{
 			offset++;
-			ft_putstr_clr(LIGHT_GREEN, "Debugging mode enabled\n");
+			ft_putstr_clr(LIGHT_GREEN, "Debugging mode enabled.\n");
 		}
 		if (flag.c > 0)
 		{
 			offset++;
-			ft_putstr_clr(LIGHT_GREEN, "Colour mode enabled\n");
+			if(flag.v > 0)
+				ft_putstr_clr(LIGHT_GREEN, "Colour mode enabled.\n");
+			else
+				ft_putstr_clr(LIGHT_RED, "Colour mode requires -v to be set.\n");
 		}
 		if(ac == 2 + offset)
 		{
