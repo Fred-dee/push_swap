@@ -59,13 +59,14 @@ void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 	}
 }
 
-void	work(int count, char **av, t_stack *a)
+int	work(int count, char **av, t_stack *a)
 {
 	int		*x;
 
 	if(is_valid(count, av) == FALSE)
 	{
 		ft_putendl_fd("Error", 2);
+		return (0);
 	}
 	else
 	{
@@ -77,6 +78,7 @@ void	work(int count, char **av, t_stack *a)
 		}
 		free(x);
 	}
+	return (1);
 }
 
 int		main(int ac, char **av)
@@ -115,12 +117,20 @@ int		main(int ac, char **av)
 			split = ft_strsplit(av[1 + offset], ' ');
 			while (split[count] != '\0')
 				count++;
-			work(count - 1, split, a);
+			if (work(count - 1, split, a) == 0)
+			{
+				//do some damage control 
+				return (0);
+			}
 		}
 		else
 		{
 			split = av + 1 + offset;
-			work(ac - 2 - offset, split, a);
+			if(work(ac - 2 - offset, split, a) == 0)
+			{
+				//do some damage control
+				return (0);
+			}
 		}
 		read_apply(a, b, &flag);
 		if(is_sorted(a->head) && ft_stackempty(b) == TRUE)

@@ -84,6 +84,8 @@ int		is_valid(int ac, char *av[])
 	while (tmp >= 0)
 	{
 		str = av[tmp];
+		if (*str == '-' || *str == '+')
+			str++;
 		while (*str != '\0')
 		{
 			if (ft_isdigit(*str) == FALSE)
