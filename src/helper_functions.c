@@ -73,40 +73,6 @@ int		is_sorted(t_list *head)
 	return (TRUE);
 }
 
-void	print_stacks(t_stack *a, t_stack *b)
-{
-	t_list	*head_a;
-	t_list	*head_b;
-	int		*tmp_a;
-	int		*tmp_b;
-
-	tmp_a = (int *)malloc(sizeof(int));
-	tmp_b = (int *)malloc(sizeof(int));
-	head_a = ft_stacktop(a);
-	head_b = ft_stacktop(b);
-	while (head_b != NULL || head_a != NULL)
-	{
-		if (head_a != NULL)
-		{
-			tmp_a = (int *)head_a->content;
-			ft_putnbr(*tmp_a);
-			ft_putchar('\t');
-			head_a = head_a->next;
-		}
-		else
-			ft_putchar('\t');
-		if (head_b != NULL)
-		{
-			tmp_b = (int *)head_b->content;
-			ft_putnbr(*tmp_b);
-			head_b = head_b->next;
-		}
-		ft_putchar('\n');
-	}
-	ft_putendl("_\t_");
-	ft_putendl("a\tb\n");
-}
-
 int		is_valid(int ac, char *av[])
 {
 	int		tmp;
