@@ -1,5 +1,6 @@
-NAME1 = push_swap
-NAME2 = checker
+#!bin/sh
+NAME1 = push_swap.x
+NAME2 = checker.x
 # Path
 
 SRC_PATH = ./src/
@@ -40,7 +41,7 @@ all: $(NAME1) $(NAME2)
 
 $(NAME1): $(OBJ) $(INC_PATH) ./src_main/push_swap.c
 	@make -C./libft/
-	@$(CC) -o $@ $(OBJ) ./src_main/push_swap.c $(LDFLAGS) $(LFT)   
+	@$(CC) -o $@  $(OBJ) ./src_main/push_swap.c  $(LDFLAGS) $(LFT)   
 
 $(NAME2): $(OBJ) $(INC_PATH) ./src_main/checker.c
 	@make -C./libft/
