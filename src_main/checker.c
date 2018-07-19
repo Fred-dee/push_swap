@@ -52,8 +52,8 @@ void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 			print_stacks(a, b);
 		if(f->v == 1 && f->c == 1)
 		{
-			print_stacks(a, b);
-			//print_stacks_clr(a, b, str);
+			//print_stacks(a, b);
+			print_stacks_clr(a, b, str);
 		}
 		free(str);
 	}

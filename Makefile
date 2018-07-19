@@ -13,6 +13,7 @@ INC_PATH = ./includes/
 SRC_NAME =	algo1.c \
 			algo2.c \
 			get_next_line.c \
+			print_functions.c \
 			push_functions.c \
 			swap_functions.c \
 			helper_functions.c \
