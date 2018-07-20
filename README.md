@@ -61,11 +61,11 @@ The project uses work from the <a href="https://github.com/Fred-Dee/libft"> libf
 
 <h1>Usage</h1>
 <p>
-The program should be compiled using the [make] command, [make re] to recompile.
-To run the algorithm generating program use:
-./push_swap [space separated integers]
-To run the checker program user:
-./push_swap [space separated integers] | ./checker [space separated integers] 
-OR to run each instruction using the flags "-v": step by step and -c "colour code the last operation" use:
-./checker <flags> [space separated integers]
+The program should be compiled using the [make] command, [make re] to recompile.<br/>
+To run the algorithm generating program use:<br/>
+./push_swap [space separated integers]<br/>
+To run the checker program user:<br/>
+./push_swap [space separated integers] | ./checker [space separated integers] <br/>
+OR to run each instruction using the flags "-v": step by step and -c "colour code the last operation" use:<br/>
+./checker <flags> [space separated integers]<br/>
 </p>
