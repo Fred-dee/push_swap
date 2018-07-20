@@ -232,7 +232,6 @@ int	push_print(t_list *head_a, t_list *head_b, char *str)
 			else
 				ft_putchar('\n');
 			head_a = head_a->next;
-		//	free(colour1);
 		}
 		if (head_b != NULL)
 		{
@@ -241,9 +240,10 @@ int	push_print(t_list *head_a, t_list *head_b, char *str)
 			ft_putnbr_clr(colour2, *((int *)head_b->content));
 			head_b = head_b->next;
 			ft_putchar('\n');
-		//	free(colour2);
 		}
 		print_rest(head_a, head_b, NULL, NULL);
+		free(colour1);
+		free(colour2);
 		return (1);
 	}
 	return (0);	

@@ -133,7 +133,7 @@ int		main(int ac, char **av)
 			}
 		}
 		read_apply(a, b, &flag);
-		if(is_sorted(a->head) && ft_stackempty(b) == TRUE)
+		if(a->head != NULL && is_sorted(a->head) && ft_stackempty(b) == TRUE)
 			ft_putendl("OK");
 		else ft_putendl("KO");
 	}

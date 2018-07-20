@@ -41,6 +41,8 @@ int		is_sorted_desc(t_list *head)
 	int		*y;
 
 	tmp = head;
+	if(tmp == NULL)
+		return (TRUE);
 	while (tmp->next != NULL)
 	{
 		prev = tmp;
@@ -61,6 +63,8 @@ int		is_sorted(t_list *head)
 	int		*y;
 
 	tmp = head;
+	if(tmp == NULL)
+		return (TRUE);
 	while (tmp->next != NULL)
 	{
 		prev = tmp;
