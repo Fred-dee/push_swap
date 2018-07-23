@@ -6,7 +6,7 @@
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 15:04:26 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/16 15:04:39 by mdilapi          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:23:42 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static void	test_1(char **ret, t_list *tmp, t_stack *a)
 {
 	t_list *second;
-	t_list *tsecond;
+	t_list *t2;
 
 	second = ft_stacktop(a)->next;
-	tsecond = ft_lstat(a->head, a->size - 2);
+	t2 = ft_lstat(a->head, a->size - 2);
 	if (*((int *)ft_lstgettail(a->head)->content) == *((int *)tmp->content))
 	{
 		revrotate_a(a);
@@ -29,7 +29,7 @@ static void	test_1(char **ret, t_list *tmp, t_stack *a)
 		swap_a(a);
 		swapnfree(ret, ft_strjoin(*ret, "sa\n"));
 	}
-	else if (tsecond != NULL && *((int *)tsecond->content) == *((int *)tmp->content))
+	else if (t2 != NULL && *((int *)t2->content) == *((int *)tmp->content))
 	{
 		revrotate_a(a);
 		swapnfree(ret, ft_strjoin(*ret, "rra\n"));
@@ -48,7 +48,7 @@ static void	test_2(char **ret, t_stack *a, t_stack *b)
 		rotate_a(a);
 		swapnfree(ret, ft_strjoin(*ret, "ra\n"));
 	}
-	while(ft_stackempty(b) == FALSE)
+	while (ft_stackempty(b) == FALSE)
 	{
 		push_a(a, b);
 		swapnfree(ret, ft_strjoin(*ret, "pa\n"));

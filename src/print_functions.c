@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_functions.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/23 11:43:39 by mdilapi           #+#    #+#             */
+/*   Updated: 2018/07/23 11:43:42 by mdilapi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	print_rest(t_list *head_a, t_list *head_b, t_list *aterm, t_list *bterm)
@@ -24,7 +36,7 @@ void	print_rest(t_list *head_a, t_list *head_b, t_list *aterm, t_list *bterm)
 }
 
 
-int	rotate_print(t_list *head_a, t_list *head_b, char *str)
+int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 {
 	char	*colour1;
 	char	*colour2;
@@ -33,17 +45,17 @@ int	rotate_print(t_list *head_a, t_list *head_b, char *str)
 
 	tail_a = ft_lstgettail(head_a);
 	tail_b = ft_lstgettail(head_b);
-	if(ft_strcmp(str, "ra") == 0 || ft_strcmp(str, "rb") == 0 || ft_strcmp(str, "rr") == 0)
+	if (ft_strcmp(str, "ra") == 0 || ft_strcmp(str, "rb") == 0 || ft_strcmp(str, "rr") == 0)
 	{
 		colour1 = ft_strdup(RED);
 		colour2 = ft_strdup(GREEN);
 	}
-	if(ft_strcmp(str, "ra") == 0)
+	if (ft_strcmp(str, "ra") == 0)
 	{
 		if (head_a != NULL)
 		{
 			ft_putnbr_clr(colour1, *((int *)head_a->content));
-			if(head_b != NULL)
+			if (head_b != NULL)
 				ft_putchar('\t');
 			else
 				ft_putchar('\n');
@@ -78,12 +90,12 @@ int	rotate_print(t_list *head_a, t_list *head_b, char *str)
 	return (0);
 }
 
-int	swap_print(t_list *head_a, t_list *head_b, char *str)
+int		swap_print(t_list *head_a, t_list *head_b, char *str)
 {
 	char	*colour1;
 	char	*colour2;
 
-	if(ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0 || ft_strcmp(str, "ss") == 0)
+	if (ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0 || ft_strcmp(str, "ss") == 0)
 	{
 		colour1 = ft_strdup(RED);
 		colour2 = ft_strdup(GREEN);
@@ -92,73 +104,48 @@ int	swap_print(t_list *head_a, t_list *head_b, char *str)
 	{
 		if (head_a != NULL)
 		{
-			ft_putnbr_clr(colour1, *((int *)head_a->content));
-			if(head_b != NULL)
-				ft_putchar('\t');
-			else
-				ft_putchar('\n');
+			print_single(colour1, head_b, *((int *)head_a->content));
 			head_a = head_a->next;
 		}
 		if (head_b != NULL)
 		{
-			if(head_a == NULL)
-				ft_putchar('\t');
-			ft_putnbr_clr(WHITE, *((int *)head_b->content));
+			print_single(WHITE, head_a, *((int *)head_b->content));
 			head_b = head_b->next;
 			ft_putchar('\n');
 		}
 		if (head_a != NULL)
 		{
-			ft_putnbr_clr(colour2, *((int *)head_a->content));
-			if(head_b != NULL)
-				ft_putchar('\t');
-			else
-				ft_putchar('\n');
+			print_single(colour2, head_b, *((int *)head_a->content));
 			head_a = head_a->next;
 		}
 		if (head_b != NULL)
 		{
-			if(head_a == NULL)
-				ft_putchar('\t');
-			ft_putnbr_clr(WHITE, *((int *)head_b->content));
+			print_single(WHITE, head_a, *((int *)head_b->content));
 			head_b = head_b->next;
 			ft_putchar('\n');
 		}
-
 	}
 	if (ft_strcmp(str, "sb") == 0)
 	{
 		if (head_a != NULL)
 		{
-			ft_putnbr_clr(WHITE, *((int *)head_a->content));
-			if(head_b != NULL)
-				ft_putchar('\t');
-			else
-				ft_putchar('\n');
+			print_single(WHITE, head_b, *((int *)head_a->content));
 			head_a = head_a->next;
 		}
 		if (head_b != NULL)
 		{
-			if(head_a == NULL)
-				ft_putchar('\t');
-			ft_putnbr_clr(colour1, *((int *)head_b->content));
+			print_single(colour1, head_a, *((int *)head_b->content));
 			head_b = head_b->next;
 			ft_putchar('\n');
 		}
 		if (head_a != NULL)
 		{
-			ft_putnbr_clr(WHITE, *((int *)head_a->content));
-			if(head_b != NULL)
-				ft_putchar('\t');
-			else
-				ft_putchar('\n');
+			print_single(WHITE, head_b, *((int *)head_a->content));
 			head_a = head_a->next;
 		}
 		if (head_b != NULL)
 		{
-			if(head_a == NULL)
-				ft_putchar('\t');
-			ft_putnbr_clr(colour2, *((int *)head_b->content));
+			print_single(colour2, head_a, *((int *)head_b->content));
 			head_b = head_b->next;
 			ft_putchar('\n');
 		}
@@ -167,40 +154,28 @@ int	swap_print(t_list *head_a, t_list *head_b, char *str)
 	{
 		if (head_a != NULL)
 		{
-			ft_putnbr_clr(colour1, *((int *)head_a->content));
-			if(head_b != NULL)
-				ft_putchar('\t');
-			else
-				ft_putchar('\n');
+			print_single(colour1, head_b, *((int *)head_a->content));
 			head_a = head_a->next;
 		}
 		if (head_b != NULL)
 		{
-			if(head_a == NULL)
-				ft_putchar('\t');
-			ft_putnbr_clr(colour1, *((int *)head_b->content));
+			print_single(colour1, head_a, *((int *)head_b->content));
 			head_b = head_b->next;
 			ft_putchar('\n');
 		}
 		if (head_a != NULL)
 		{
-			ft_putnbr_clr(colour2, *((int *)head_a->content));
-			if(head_b != NULL)
-				ft_putchar('\t');
-			else
-				ft_putchar('\n');
+			print_single(colour2, head_b, *((int *)head_a->content));
 			head_a = head_a->next;
 		}
 		if (head_b != NULL)
 		{
-			if(head_a == NULL)
-				ft_putchar('\t');
-			ft_putnbr_clr(colour2, *((int *)head_b->content));
+			print_single(colour2, head_a, *((int *)head_b->content));
 			head_b = head_b->next;
 			ft_putchar('\n');
 		}
 	}
-	if(ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0 || ft_strcmp(str, "ss") == 0)
+	if (ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0 || ft_strcmp(str, "ss") == 0)
 	{
 		print_rest(head_a, head_b, NULL, NULL);
 		return (1);
@@ -208,36 +183,31 @@ int	swap_print(t_list *head_a, t_list *head_b, char *str)
 	return (0);
 }
 
-int	push_print(t_list *head_a, t_list *head_b, char *str)
+int		push_print(t_list *head_a, t_list *head_b, char *str)
 {
 	char	*colour1;
 	char	*colour2;
-	if(ft_strcmp(str, "pa") == 0)
+
+	if (ft_strcmp(str, "pa") == 0)
 	{
 		colour1 = ft_strdup(GREEN);
 		colour2 = ft_strdup(RED);
 	}
-	if(ft_strcmp(str, "pb") == 0)
+	if (ft_strcmp(str, "pb") == 0)
 	{
 		colour1 = ft_strdup(RED);
 		colour2 = ft_strdup(GREEN);
 	}
-	if(ft_strcmp(str, "pa") == 0 || ft_strcmp(str, "pb") == 0)
+	if (ft_strcmp(str, "pa") == 0 || ft_strcmp(str, "pb") == 0)
 	{
 		if (head_a != NULL)
 		{
-			ft_putnbr_clr(colour1, *((int *)head_a->content));
-			if(head_b != NULL)
-				ft_putchar('\t');
-			else
-				ft_putchar('\n');
+			print_single(colour1, head_b, *((int *)head_a->content));
 			head_a = head_a->next;
 		}
 		if (head_b != NULL)
 		{
-			if(head_a == NULL)
-				ft_putchar('\t');
-			ft_putnbr_clr(colour2, *((int *)head_b->content));
+			print_single(colour2, head_a, *((int *)head_b->content));
 			head_b = head_b->next;
 			ft_putchar('\n');
 		}
@@ -248,6 +218,7 @@ int	push_print(t_list *head_a, t_list *head_b, char *str)
 	}
 	return (0);	
 }
+
 void	print_stacks_clr(t_stack *a, t_stack *b, char *str)
 {
 	t_list	*head_a;
@@ -255,11 +226,11 @@ void	print_stacks_clr(t_stack *a, t_stack *b, char *str)
 
 	head_a = ft_stacktop(a);
 	head_b = ft_stacktop(b);
-	if(push_print(head_a, head_b, str) != 1)
+	if (push_print(head_a, head_b, str) != 1)
 	{
-		if(swap_print(head_a, head_b, str) != 1)
+		if (swap_print(head_a, head_b, str) != 1)
 		{
-			if(rotate_print(head_a, head_b, str) != 1)
+			if (rotate_print(head_a, head_b, str) != 1)
 				ft_putstr_clr(RED, "Invalid move selected\n");
 		}
 	}

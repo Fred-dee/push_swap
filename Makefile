@@ -1,6 +1,6 @@
 #!bin/sh
-NAME1 = push_swap.x
-NAME2 = checker.x
+NAME1 = push_swap
+NAME2 = checker
 # Path
 
 SRC_PATH = ./src/
@@ -15,6 +15,7 @@ SRC_NAME =	algo1.c \
 			algo2.c \
 			get_next_line.c \
 			print_functions.c \
+			print_functions2.c \
 			push_functions.c \
 			swap_functions.c \
 			helper_functions.c \
