@@ -6,7 +6,7 @@
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 10:52:44 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/12 10:53:08 by mdilapi          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:18:34 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	swap_a(t_stack *a)
 
 void	swap_b(t_stack *b)
 {
-	if(b != NULL)
+	if (b != NULL)
 	{
 		ft_stack_swap_top(b);
 	}

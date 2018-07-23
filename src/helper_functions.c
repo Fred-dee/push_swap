@@ -6,12 +6,11 @@
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 12:15:43 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/16 12:15:48 by mdilapi          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:12:35 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 t_list	*stack_min(t_stack *s)
 {
@@ -41,7 +40,7 @@ int		is_sorted_desc(t_list *head)
 	int		*y;
 
 	tmp = head;
-	if(tmp == NULL)
+	if (tmp == NULL)
 		return (TRUE);
 	while (tmp->next != NULL)
 	{
@@ -63,7 +62,7 @@ int		is_sorted(t_list *head)
 	int		*y;
 
 	tmp = head;
-	if(tmp == NULL)
+	if (tmp == NULL)
 		return (TRUE);
 	while (tmp->next != NULL)
 	{
@@ -77,12 +76,30 @@ int		is_sorted(t_list *head)
 	return (TRUE);
 }
 
+int		duplicates(int ac, long arr[])
+{
+	int	tmp;
+	int	i;
+
+	tmp = 0;
+	while (tmp < ac - 1)
+	{
+		i = tmp + 1;
+		while (i <= ac)
+		{
+			if (arr[tmp] == arr[i++])
+				return (FALSE);
+		}
+		tmp++;
+	}
+	return (TRUE);
+}
+
 int		is_valid(int ac, char *av[])
 {
 	int		tmp;
 	char	*str;
 	long	arr[ac];
-	int		i;
 
 	tmp = ac;
 	while (tmp >= 0)
@@ -101,16 +118,5 @@ int		is_valid(int ac, char *av[])
 			return (FALSE);
 		tmp--;
 	}
-	tmp = 0;
-	while (tmp < ac - 1)
-	{
-		i = tmp + 1;
-		while (i <= ac)
-		{
-			if (arr[tmp] == arr[i++])
-				return (FALSE);
-		}
-		tmp++;
-	}
-	return (TRUE);
+	return (duplicates(ac, arr));
 }

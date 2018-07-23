@@ -6,7 +6,7 @@
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 10:55:33 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/12 10:55:48 by mdilapi          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:14:55 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	push_a(t_stack *a, t_stack *b)
 
 void	push_b(t_stack *a, t_stack *b)
 {
-	if(ft_stackempty(a) == FALSE)
+	if (ft_stackempty(a) == FALSE)
 		ft_stackpush(b, ft_stackpop(a));
 }

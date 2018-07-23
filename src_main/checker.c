@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
-void	select_move(t_stack *a, t_stack *b, char *str)
+static void	select_move(t_stack *a, t_stack *b, char *str)
 {
-	if(ft_strcmp(str, "sa") == 0)
+	if (ft_strcmp(str, "sa") == 0)
 		swap_a(a);
 	else if (ft_strcmp(str, "sb") == 0)
 		swap_b(b);
@@ -25,18 +24,19 @@ void	select_move(t_stack *a, t_stack *b, char *str)
 		push_a(a, b);
 	else if (ft_strcmp(str, "pb") == 0)
 		push_b(a, b);
+	else if (ft_strcmp(str, "ra") == 0)
+		rotate_a(a);
 }
-void	read_apply(t_stack *a, t_stack *b, t_flags *f)
+
+static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 {
 	char	*str;
 	int		read_ret;
 
-	while((read_ret = get_next_line(0, &str)) > 0)
+	while ((read_ret = get_next_line(0, &str)) > 0)
 	{
 		select_move(a, b, str);
-		if (ft_strcmp(str, "ra") == 0)
-			rotate_a(a);
-		else if (ft_strcmp(str, "rb") == 0)
+		if (ft_strcmp(str, "rb") == 0)
 			rotate_b(b);
 		else if (ft_strcmp(str, "rr") == 0)
 			rotate_r(a, b);
@@ -47,23 +47,20 @@ void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 		else if (ft_strcmp(str, "rrr") == 0)
 			revrotate_r(a, b);
 		else if (ft_strcmp(str, "quit") == 0)
-			break;
+			break ;
 		if (f->v == 1 && f->c == 0)
 			print_stacks(a, b);
-		if(f->v == 1 && f->c == 1)
-		{
-			//print_stacks(a, b);
+		if (f->v == 1 && f->c == 1)
 			print_stacks_clr(a, b, str);
-		}
 		free(str);
 	}
 }
 
-int	work(int count, char **av, t_stack *a)
+int			work(int count, char **av, t_stack *a)
 {
 	int		*x;
 
-	if(is_valid(count, av) == FALSE)
+	if (is_valid(count, av) == FALSE)
 	{
 		ft_putendl_fd("Error", 2);
 		return (0);
@@ -106,36 +103,31 @@ int		main(int ac, char **av)
 		if (flag.c > 0)
 		{
 			offset++;
-			if(flag.v > 0)
+			if (flag.v > 0)
 				ft_putstr_clr(LIGHT_GREEN, "Colour mode enabled.\n");
 			else
 				ft_putstr_clr(LIGHT_RED, "Colour mode requires -v to be set.\n");
 		}
-		if(ac == 2 + offset)
+		if (ac == 2 + offset)
 		{
 			count = 0;
 			split = ft_strsplit(av[1 + offset], ' ');
 			while (split[count] != '\0')
 				count++;
 			if (work(count - 1, split, a) == 0)
-			{
-				//do some damage control 
 				return (0);
-			}
 		}
 		else
 		{
 			split = av + 1 + offset;
-			if(work(ac - 2 - offset, split, a) == 0)
-			{
-				//do some damage control
+			if (work(ac - 2 - offset, split, a) == 0)
 				return (0);
-			}
 		}
 		read_apply(a, b, &flag);
-		if(a->head != NULL && is_sorted(a->head) && ft_stackempty(b) == TRUE)
+		if (a->head != NULL && is_sorted(a->head) && ft_stackempty(b) == TRUE)
 			ft_putendl("OK");
-		else ft_putendl("KO");
+		else
+			ft_putendl("KO");
 	}
 	return (0);
 }

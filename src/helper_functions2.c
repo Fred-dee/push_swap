@@ -6,7 +6,7 @@
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 15:07:46 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/16 15:07:49 by mdilapi          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:13:47 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int		char_count(const char *s, char c)
 
 	tmp = (char *)s;
 	ret = 0;
-	while(*tmp != '\0')
+	while (*tmp != '\0')
 	{
-		if(*tmp == c)
+		if (*tmp == c)
 			ret++;
 		tmp++;
 	}
@@ -39,9 +39,9 @@ int		char_count(const char *s, char c)
 
 void	contains_flags(int ac, char **av, t_flags *flags)
 {
-	while(ac > 0)
+	while (ac > 0)
 	{
-		if(ft_strcmp(av[ac], "-v") == 0)
+		if (ft_strcmp(av[ac], "-v") == 0)
 			flags->v = 1;
 		if (ft_strcmp(av[ac], "-c") == 0)
 			flags->c = 1;
@@ -67,4 +67,10 @@ t_list	*stack_max(t_stack *s)
 		}
 	}
 	return (ret);
+}
+
+void	revrotate_r(t_stack *a, t_stack *b)
+{
+	ft_stackrevrotate(a);
+	ft_stackrevrotate(b);
 }

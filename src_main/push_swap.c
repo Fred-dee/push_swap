@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/12 13:30:54 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/12 13:31:17 by mdilapi          ###   ########.fr       */
+/*   Created: 2018/07/23 10:45:05 by mdilapi           #+#    #+#             */
+/*   Updated: 2018/07/23 10:45:07 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
-void	push_swap(t_stack *a, t_stack *b)
+static void	push_swap(t_stack *a, t_stack *b)
 {
 	char	*ret[2];
 	int		i;
@@ -27,7 +26,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	min = char_count(ret[0], '\n');
 	while (i < 2)
 	{
-		if(char_count(ret[i], '\n') < min)
+		if (char_count(ret[i], '\n') < min)
 		{
 			choice = i;
 			min = char_count(ret[i], '\n');
@@ -37,13 +36,13 @@ void	push_swap(t_stack *a, t_stack *b)
 	ft_putstr(ret[choice]);
 }
 
-void	work(int count, char **av)
+static void	work(int count, char **av)
 {
 	t_stack *a;
 	t_stack *b;
 	int		*x;
 
-	if(is_valid(count, av) == FALSE)
+	if (is_valid(count, av) == FALSE)
 	{
 		ft_putendl_fd("Error", 2);
 	}
@@ -62,15 +61,14 @@ void	work(int count, char **av)
 	}
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	int		count;
-	//int		debugging;
 	char	**split;
 
 	if (ac > 1)
 	{
-		if(ac == 2)
+		if (ac == 2)
 		{
 			count = 0;
 			split = ft_strsplit(av[1], ' ');
@@ -86,4 +84,3 @@ int		main(int ac, char **av)
 	}
 	return (0);
 }
-

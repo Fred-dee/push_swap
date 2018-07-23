@@ -6,7 +6,7 @@
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 15:02:01 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/12 15:02:03 by mdilapi          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:15:30 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,5 @@ void	revrotate_a(t_stack *a)
 
 void	revrotate_b(t_stack *b)
 {
-	ft_stackrevrotate(b);
-}
-
-void	revrotate_r(t_stack *a, t_stack *b)
-{
-	ft_stackrevrotate(a);
 	ft_stackrevrotate(b);
 }
