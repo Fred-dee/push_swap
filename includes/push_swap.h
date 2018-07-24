@@ -48,10 +48,13 @@ int				int_cmp(int *a, int *b);
 void			set_swap_colour(char colour[4][8], char *str);
 void			set_rotate_colour(char colour[4][8], char *str);
 t_list			*stack_min(t_stack *s);
+t_list			*stack_min_range(t_stack *s, int range)
 t_list			*stack_max(t_stack *s);
+t_list			*stack_max_range(t_stack *s, int range)
 void			swapnfree(char **var, char *new_val);
 char			*algo1(t_stack *a, t_stack *b);
 char			*algo2(t_stack *a, t_stack *b);
+char			*algo3(t_stack *a, t_stack *b);
 int				char_count(const char *s, char c);
 void			contains_flags(int ac, char **av, t_flags *flags);
 void			flag_check(t_flags *flag);

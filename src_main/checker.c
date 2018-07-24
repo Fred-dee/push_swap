@@ -32,7 +32,7 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 {
 	char	*str;
 	int		read_ret;
-	print_stacks(a, b, "Start:");
+	//print_stacks(a, b, "Start:");
 	while ((read_ret = get_next_line(0, &str)) > 0)
 	{
 		select_move(a, b, str);
@@ -54,7 +54,7 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 			print_stacks_clr(a, b, str);
 		free(str);
 	}
-	ft_putendl_clr(LIGHT_GREEN, "End.");
+	//ft_putendl_clr(LIGHT_GREEN, "End.");
 }
 
 static int	work(int count, char **av, t_stack *a)

@@ -26,3 +26,48 @@ void	flag_check(t_flags *flag)
 			ft_putstr_clr(LIGHT_RED, "Colour mode requires -v to be set.\n");
 	}	
 }
+
+t_list	*stack_min_range(t_stack *s, int range)
+{
+	t_list *tmp;
+	t_list *ret;
+	int		i;
+
+	ret = NULL;
+	i = 0;
+	if (s != NULL)
+	{
+		tmp = s->head;
+		ret = tmp;
+		while (tmp != NULL && i < range)
+		{
+			i++;
+			if (*((int *)tmp->content) < *((int *)ret->content))
+				ret = tmp;
+			tmp = tmp->next;
+		}
+	}
+	return (ret);
+}
+
+t_list	*stack_max_range(t_stack *s, int range)
+{
+	t_list *tmp;
+	t_list *ret;
+	int		i;
+
+	ret = NULL;
+	i = 0;
+	if (s != NULL)
+	{
+		tmp = s->head;
+		ret = tmp;
+		while (tmp != NULL && i < range)
+		{
+			i++;
+			if (*((int *)tmp->content) > *((int *)ret->content))
+				ret = tmp;
+			tmp = tmp->next;
+		}
+	}
+}

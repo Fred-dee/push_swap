@@ -19,7 +19,7 @@ static void	push_swap(t_stack *a, t_stack *b)
 	int		choice;
 	int		min;
 
-	i = 0;
+	i = 1;
 	choice = 0;
 	ret[0] = algo1(ft_stackdup(a), ft_stackdup(b));
 	ret[1] = algo2(ft_stackdup(a), ft_stackdup(b));
