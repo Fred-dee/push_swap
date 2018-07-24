@@ -56,7 +56,7 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 	}
 }
 
-int			work(int count, char **av, t_stack *a)
+static int	work(int count, char **av, t_stack *a)
 {
 	int		*x;
 
@@ -78,14 +78,34 @@ int			work(int count, char **av, t_stack *a)
 	return (1);
 }
 
-int		main(int ac, char **av)
+static int	parse_content(int ac, char **av, t_flags *flag, t_stack *a)
 {
 	int		count;
 	char	**split;
+
+	if (ac == 2 + flag->offset)
+	{
+		count = 0;
+		split = ft_strsplit(av[1 + flag->offset], ' ');
+		while (split[count] != '\0')
+			count++;
+		if (work(count - 1, split, a) == 0)
+			return (0);
+	}
+	else
+	{
+		split = av + 1 + flag->offset;
+		if (work(ac - 2 - flag->offset, split, a) == 0)
+			return (0);
+	}
+	return (1);
+}
+
+int			main(int ac, char **av)
+{
 	t_stack *a;
 	t_stack *b;
 	t_flags	flag;
-	int		offset;
 
 	if (ac > 1)
 	{
@@ -93,36 +113,10 @@ int		main(int ac, char **av)
 		a = ft_stacknew(NULL, 0);
 		flag.v = 0;
 		flag.c = 0;
-		offset = 0;
 		contains_flags(ac - 1, av, &flag);
-		if (flag.v > 0)
-		{
-			offset++;
-			ft_putstr_clr(LIGHT_GREEN, "Debugging mode enabled.\n");
-		}
-		if (flag.c > 0)
-		{
-			offset++;
-			if (flag.v > 0)
-				ft_putstr_clr(LIGHT_GREEN, "Colour mode enabled.\n");
-			else
-				ft_putstr_clr(LIGHT_RED, "Colour mode requires -v to be set.\n");
-		}
-		if (ac == 2 + offset)
-		{
-			count = 0;
-			split = ft_strsplit(av[1 + offset], ' ');
-			while (split[count] != '\0')
-				count++;
-			if (work(count - 1, split, a) == 0)
-				return (0);
-		}
-		else
-		{
-			split = av + 1 + offset;
-			if (work(ac - 2 - offset, split, a) == 0)
-				return (0);
-		}
+		flag_check(&flag);
+		if (parse_content(ac, av, &flag, a) == 0)
+			return (0);
 		read_apply(a, b, &flag);
 		if (a->head != NULL && is_sorted(a->head) && ft_stackempty(b) == TRUE)
 			ft_putendl("OK");

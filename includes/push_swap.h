@@ -22,6 +22,7 @@ typedef struct	s_flags
 {
 	int			v;
 	int			c;
+	int			offset;
 }				t_flags;
 
 void			swap_a(t_stack *a);
@@ -45,7 +46,7 @@ int				is_sorted(t_list *head);
 int				is_sorted_desc(t_list *head);
 int				int_cmp(int *a, int *b);
 void			set_swap_colour(char colour[4][8], char *str);
-void			set_rotate_colour(char colour[4][8], char *str);
+void			set_rotate_colour(char colour[4][6], char *str);
 t_list			*stack_min(t_stack *s);
 t_list			*stack_max(t_stack *s);
 void			swapnfree(char **var, char *new_val);
@@ -53,4 +54,5 @@ char			*algo1(t_stack *a, t_stack *b);
 char			*algo2(t_stack *a, t_stack *b);
 int				char_count(const char *s, char c);
 void			contains_flags(int ac, char **av, t_flags *flags);
+void			flag_check(t_flags *flag);
 #endif

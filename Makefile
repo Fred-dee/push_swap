@@ -20,6 +20,7 @@ SRC_NAME =	algo1.c \
 			swap_functions.c \
 			helper_functions.c \
 			helper_functions2.c \
+			helper_functions3.c \
 			rotate_functions.c \
 
 OBJ_NAME = $(SRC_NAME:%.c=%.o)

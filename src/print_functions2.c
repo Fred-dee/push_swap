@@ -14,7 +14,7 @@
 
 int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 {
-	char	colour[4][8];
+	char	colour[4][6];
 	t_list	*tail_a;
 	t_list	*tail_b;
 
@@ -50,7 +50,7 @@ void	print_single(char const *colour, t_list *head, int value)
 		ft_putchar('\n');
 }
 
-void	set_rotate_colour_help(char colour[4][8], char *str)
+void	set_rotate_colour_help(char colour[4][6], char *str)
 {
 	if (ft_strcmp(str, "rra") == 0)
 	{
@@ -75,7 +75,7 @@ void	set_rotate_colour_help(char colour[4][8], char *str)
 	}
 }
 
-void	set_rotate_colour(char colour[4][8], char *str)
+void	set_rotate_colour(char colour[4][6], char *str)
 {
 	if (ft_strcmp(str, "ra") == 0)
 	{

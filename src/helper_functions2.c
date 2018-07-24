@@ -39,12 +39,19 @@ int		char_count(const char *s, char c)
 
 void	contains_flags(int ac, char **av, t_flags *flags)
 {
+	flags->offset = 0;
 	while (ac > 0)
 	{
 		if (ft_strcmp(av[ac], "-v") == 0)
+		{
 			flags->v = 1;
+			flags->offset++;
+		}
 		if (ft_strcmp(av[ac], "-c") == 0)
+		{
 			flags->c = 1;
+			flags->offset++;
+		}
 		ac--;
 	}
 }
