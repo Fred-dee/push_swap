@@ -30,6 +30,7 @@ void					ft_memdel(void **ap);
 void					ft_putchar(char c);
 void					ft_putchar_fd(char c, int fd);
 void					ft_putendl(char const *s);
+void					ft_putendl_clr(char const *clr, char const *str);
 void					ft_putendl_fd(char const *s, int fd);
 void					ft_putnbr(int n);
 void					ft_putnbr_clr(char const *clr, int n);

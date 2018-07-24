@@ -14,7 +14,7 @@
 
 void	print_rest(t_list *head_a, t_list *head_b, t_list *aterm, t_list *bterm)
 {
-	while (head_b != bterm || head_a != aterm)
+	while ((head_b != bterm || head_a != aterm) && !(head_b == NULL && head_a == NULL))
 	{
 		if (head_a != aterm && head_a != NULL)
 		{
@@ -101,6 +101,8 @@ void	print_stacks_clr(t_stack *a, t_stack *b, char *str)
 
 	head_a = ft_stacktop(a);
 	head_b = ft_stacktop(b);
+	ft_putstr_clr(LIGHT_BLUE, str);
+	ft_putchar('\n');
 	if (ft_strcmp(str, "pa") == 0 || ft_strcmp(str, "pb") == 0)
 		push_print(head_a, head_b, str);
 	else if (ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0
@@ -114,12 +116,20 @@ void	print_stacks_clr(t_stack *a, t_stack *b, char *str)
 		ft_putstr_clr(RED, "Invalid move selected\n");
 }
 
-void	print_stacks(t_stack *a, t_stack *b)
+void	print_stacks(t_stack *a, t_stack *b, char *str)
 {
 	t_list	*head_a;
 	t_list	*head_b;
 
 	head_a = ft_stacktop(a);
 	head_b = ft_stacktop(b);
-	print_rest(head_a, head_b, NULL, NULL);
+	ft_putendl_clr(LIGHT_BLUE, str);
+	if(ft_strcmp(str, "pa") == 0 || ft_strcmp(str, "pb") == 0
+		||ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0
+		|| ft_strcmp(str, "ss") == 0 ||ft_strcmp(str, "ra") == 0 || ft_strcmp(str, "rb") == 0
+		|| ft_strcmp(str, "rr") == 0 || ft_strcmp(str, "rra") == 0 ||
+		ft_strcmp(str, "rrb") == 0 || ft_strcmp(str, "rrr") == 0 || ft_strcmp(str, "Start:") == 0)
+		print_rest(head_a, head_b, NULL, NULL);
+	else
+		ft_putstr_clr(RED, "Invalid move selected\n");
 }

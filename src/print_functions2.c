@@ -14,7 +14,7 @@
 
 int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 {
-	char	colour[4][6];
+	char	colour[4][8];
 	t_list	*tail_a;
 	t_list	*tail_b;
 
@@ -50,7 +50,7 @@ void	print_single(char const *colour, t_list *head, int value)
 		ft_putchar('\n');
 }
 
-void	set_rotate_colour_help(char colour[4][6], char *str)
+void	set_rotate_colour_help(char colour[4][8], char *str)
 {
 	if (ft_strcmp(str, "rra") == 0)
 	{
@@ -59,14 +59,14 @@ void	set_rotate_colour_help(char colour[4][6], char *str)
 		ft_strcpy(colour[2], RED);
 		ft_strcpy(colour[3], WHITE);
 	}
-	if (ft_strcmp(str, "rrb") == 0)
+	else if (ft_strcmp(str, "rrb") == 0)
 	{
 		ft_strcpy(colour[0], WHITE);
 		ft_strcpy(colour[1], GREEN);
 		ft_strcpy(colour[2], WHITE);
 		ft_strcpy(colour[3], RED);
 	}
-	if (ft_strcpy(str, "rrr") == 0)
+	else if (ft_strcpy(str, "rrr") == 0)
 	{
 		ft_strcpy(colour[0], GREEN);
 		ft_strcpy(colour[1], GREEN);
@@ -75,7 +75,7 @@ void	set_rotate_colour_help(char colour[4][6], char *str)
 	}
 }
 
-void	set_rotate_colour(char colour[4][6], char *str)
+void	set_rotate_colour(char colour[4][8], char *str)
 {
 	if (ft_strcmp(str, "ra") == 0)
 	{
@@ -84,21 +84,22 @@ void	set_rotate_colour(char colour[4][6], char *str)
 		ft_strcpy(colour[2], GREEN);
 		ft_strcpy(colour[3], WHITE);
 	}
-	if (ft_strcmp(str, "rb") == 0)
+	else if (ft_strcmp(str, "rb") == 0)
 	{
 		ft_strcpy(colour[0], WHITE);
 		ft_strcpy(colour[1], RED);
 		ft_strcpy(colour[2], WHITE);
 		ft_strcpy(colour[3], GREEN);
 	}
-	if (ft_strcpy(str, "rr") == 0)
+	else if (ft_strcpy(str, "rr") == 0)
 	{
 		ft_strcpy(colour[0], RED);
 		ft_strcpy(colour[1], RED);
 		ft_strcpy(colour[2], GREEN);
 		ft_strcpy(colour[3], GREEN);
 	}
-	set_rotate_colour_help(colour, str);
+	else
+		set_rotate_colour_help(colour, str);
 }
 
 void	set_swap_colour(char colour[4][8], char *str)
