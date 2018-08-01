@@ -14,10 +14,15 @@
 
 char	*algo3(t_stack *a, t_stack *b)
 {
-	int	half;
-	t_list *min;
+	int		half;
+	char	*ret;
+	t_list	*min;
+	t_list	*max;
 
 	half = a->size / 2;
 	min = stack_min_range(a, half);
+	max = stack_max_range(a + half, half);
+
 	
+	return (ret);
 }
