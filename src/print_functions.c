@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 void	print_rest(t_list *head_a, t_list *head_b, t_list *aterm, t_list *bterm)
 {
-	while ((head_b != bterm || head_a != aterm) && !(head_b == NULL && head_a == NULL))
+	while ((head_b != bterm || head_a != aterm))
 	{
 		if (head_a != aterm && head_a != NULL)
 		{

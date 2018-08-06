@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/12 10:03:43 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/07/12 10:04:13 by mdilapi          ###   ########.fr       */
+/*   Created: 2018/08/06 07:29:03 by mdilapi           #+#    #+#             */
+/*   Updated: 2018/08/06 07:29:06 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,6 @@ char			*algo3(t_stack *a, t_stack *b);
 int				char_count(const char *s, char c);
 void			contains_flags(int ac, char **av, t_flags *flags);
 void			flag_check(t_flags *flag);
+t_list			*list_max_range(t_list *lst, int range);
+t_list			*list_min_range(t_list *lst, int range);
 #endif

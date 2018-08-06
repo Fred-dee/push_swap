@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 {
@@ -32,11 +33,25 @@ int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 		head_b = head_b->next;
 		ft_putchar('\n');
 	}
-	print_rest(head_a, head_b, tail_a, tail_b);
-	if (tail_a != NULL)
+	while (head_b != NULL && head_a != NULL && head_b != tail_b && head_a != tail_a)
+	{
+		print_single(WHITE, head_b, *((int *)head_a->content));
+		head_a = head_a->next;
+		print_single(WHITE, head_a, *((int *)head_b->content));
+		head_b = head_b->next;
+		ft_putchar('\n');
+	}
+	if (head_a != tail_a && head_b == NULL)
+		print_rest(head_a, head_b, tail_a, NULL);
+	else if (head_b != tail_b && head_a == NULL)
+		print_rest(head_a, head_b, NULL, tail_b);
+	if (tail_a != NULL && head_a != NULL)
 		print_single(colour[2], tail_b, *((int *)tail_a->content));
-	if (tail_b != NULL)
+	if (tail_b != NULL && head_b != NULL)
+	{
+		ft_putstr("\t");
 		print_single(colour[3], tail_a, *((int *)tail_b->content));
+	}
 	ft_putendl("\n_\t_\na\tb");
 	return (1);
 }
@@ -66,7 +81,7 @@ void	set_rotate_colour_help(char colour[4][8], char *str)
 		ft_strcpy(colour[2], WHITE);
 		ft_strcpy(colour[3], RED);
 	}
-	else if (ft_strcpy(str, "rrr") == 0)
+	else if (ft_strcmp(str, "rrr") == 0)
 	{
 		ft_strcpy(colour[0], GREEN);
 		ft_strcpy(colour[1], GREEN);
@@ -91,7 +106,7 @@ void	set_rotate_colour(char colour[4][8], char *str)
 		ft_strcpy(colour[2], WHITE);
 		ft_strcpy(colour[3], GREEN);
 	}
-	else if (ft_strcpy(str, "rr") == 0)
+	else if (ft_strcmp(str, "rr") == 0)
 	{
 		ft_strcpy(colour[0], RED);
 		ft_strcpy(colour[1], RED);
@@ -118,7 +133,7 @@ void	set_swap_colour(char colour[4][8], char *str)
 		ft_strcpy(colour[2], WHITE);
 		ft_strcpy(colour[3], GREEN);
 	}
-	if (ft_strcpy(str, "ss") == 0)
+	if (ft_strcmp(str, "ss") == 0)
 	{
 		ft_strcpy(colour[0], RED);
 		ft_strcpy(colour[1], RED);

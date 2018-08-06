@@ -21,6 +21,10 @@ static void	push_swap(t_stack *a, t_stack *b)
 
 	i = 1;
 	choice = 0;
+	(void) min;
+	(void) ret;
+	ret[0] = algo3(a, b);
+	/*
 	ret[0] = algo1(ft_stackdup(a), ft_stackdup(b));
 	ret[1] = algo2(ft_stackdup(a), ft_stackdup(b));
 	min = char_count(ret[0], '\n');
@@ -32,7 +36,7 @@ static void	push_swap(t_stack *a, t_stack *b)
 			min = char_count(ret[i], '\n');
 		}
 		i++;
-	}
+	} */
 	ft_putstr(ret[choice]);
 }
 

@@ -50,6 +50,52 @@ t_list	*stack_min_range(t_stack *s, int range)
 	return (ret);
 }
 
+t_list *list_max_range(t_list *lst, int range)
+{
+	t_list	*tmp;
+	t_list	*ret;
+	int		i;
+
+	ret = NULL;
+	i = 0;
+	if(lst != NULL)
+	{
+		tmp = lst;
+		ret = tmp;
+		while (tmp != NULL && i < range)
+		{
+			i++;
+			if (*((int *)tmp->content) > *((int *)ret->content))
+				ret = tmp;
+			tmp = tmp->next;
+		}
+	}
+	return (ret);
+}
+
+t_list *list_min_range(t_list *lst, int range)
+{
+	t_list	*tmp;
+	t_list	*ret;
+	int		i;
+
+	ret = NULL;
+	i = 0;
+	if(lst != NULL)
+	{
+		tmp = lst;
+		ret = tmp;
+		while (tmp != NULL && i < range)
+		{
+			i++;
+			if (*((int *)tmp->content) < *((int *)ret->content))
+				ret = tmp;
+			tmp = tmp->next;
+		}
+	}
+	return (ret);
+}
+
 t_list	*stack_max_range(t_stack *s, int range)
 {
 	t_list *tmp;
@@ -70,4 +116,5 @@ t_list	*stack_max_range(t_stack *s, int range)
 			tmp = tmp->next;
 		}
 	}
+	return (ret);
 }
