@@ -1,10 +1,14 @@
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 char	*algo5(t_stack *a, t_stack *b)
 {
-	int		**converted;
+	int		converted[a->size][2];
+	char	*ret;
+	(void)	b;
 
-	converted = stack_to_int(a);
-	rank_arr(converted);
-	
+	ret = NULL;
+	stack_to_int(a, converted);
+	rank_arr(converted, a->size);
+	return (ret);
 }

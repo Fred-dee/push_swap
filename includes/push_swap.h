@@ -63,4 +63,6 @@ void			flag_check(t_flags *flag);
 t_list			*list_max_range(t_list *lst, int range);
 t_list			*list_min_range(t_list *lst, int range);
 void			test_2_sizeof3(char **ret, t_stack *a);
+void			stack_to_int(t_stack *s, int arr[][2]);
+void			rank_arr(int arr[][2], int size);
 #endif

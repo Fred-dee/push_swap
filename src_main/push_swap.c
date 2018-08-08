@@ -23,7 +23,7 @@ static void	push_swap(t_stack *a, t_stack *b)
 	choice = 0;
 	(void) min;
 	(void) ret;
-	ret[0] = algo3(a, b);
+	ret[0] = algo5(a, b);
 	/*
 	ret[0] = algo1(ft_stackdup(a), ft_stackdup(b));
 	ret[1] = algo2(ft_stackdup(a), ft_stackdup(b));

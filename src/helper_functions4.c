@@ -1,29 +1,25 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-/*
-int		**stack_to_int(t_stack *s)
+
+void	stack_to_int(t_stack *s, int arr[][2])
 {
 	t_list	*tmp;
-	int		**ret;
 	int		i;
 
 	if (s != NULL && s->head != NULL)
 	{
-		if((ret = (int **)malloc(sizeof(int *) * s->size)) != NULL)
+		tmp = s->head;
+		i = 0;
+		while (tmp != NULL)
 		{
-			tmp = s->head;
-			i = 0;
-			while (tmp != NULL)
-			{
-				ret[i] = 
-			}
-
-
+			arr[i][0] = *((int *)tmp->content);
+			arr[i][1] = 0;
+			tmp = tmp->next;
+			i++;
 		}	
 	}
-
-} */
+}
 
 void	rank_arr(int arr[][2], int size)
 {
@@ -72,21 +68,4 @@ void	rank_arr(int arr[][2], int size)
 		}
 		i++;
 	}
-}
-
-int main(void)
-{
-	int arr[6][2];
-	int **pointer;
-
-	arr[0][0] = 34;
-	arr[1][0] = 3;
-	arr[2][0] = 31;
-	arr[3][0] = 98;
-	arr[4][0] = 92;
-	arr[5][0] = 23;
-
-	rank_arr(arr, 6);
-	for (int i = 0; i < 6; i++)
-		printf("value: %d rank: %d\n", arr[i][0],arr[i][1]);
 }
