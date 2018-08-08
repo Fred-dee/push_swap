@@ -15,11 +15,11 @@
 static void	push_swap(t_stack *a, t_stack *b)
 {
 	char	*ret[2];
-	int		i;
+	//int		i;
 	int		choice;
 	int		min;
 
-	i = 1;
+	//i = 1;
 	choice = 0;
 	(void) min;
 	(void) ret;

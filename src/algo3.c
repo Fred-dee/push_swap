@@ -21,28 +21,28 @@ char	*algo3(t_stack *a, t_stack *b)
 
 	ret = ft_strnew(1);
 	half = (int) a->size / 2;
-	min = stack_min(a);
+
 	while ((int )a->size > half)
 	{
+		min = stack_min(a);
 		if (ft_stack_indexof(a, min) > (int) a->size / 2)
 		{
-			while(ft_memcmp(ft_stacktop(a)->content, min->content, min->content_size) != 0)
+			while(*((int *)ft_stacktop(a)->content) != *((int *)min->content))
 			{
 				revrotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "rra"));
+				swapnfree(&ret, ft_strjoin(ret, "rra\n"));
 			}
-
 		}
 		else
 		{
-			while(ft_memcmp(ft_stacktop(a)->content, min->content, min->content_size) != 0)
+			while(*((int *)ft_stacktop(a)->content) != *((int *)min->content))
 			{
 				rotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "ra"));
+				swapnfree(&ret, ft_strjoin(ret, "ra\n"));
 			}
 		}
 		push_b(a, b);
-		swapnfree(&ret, ft_strjoin(ret, "pb"));
+		swapnfree(&ret, ft_strjoin(ret, "pb\n"));
 	}
 	swapnfree(&ret, ft_strjoin(ret, algo2(a, b)));
 	return (ret);
