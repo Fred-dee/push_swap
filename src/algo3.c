@@ -21,28 +21,43 @@ char	*algo3(t_stack *a, t_stack *b)
 
 	ret = ft_strnew(1);
 	half = (int) a->size / 2;
-
-	while ((int )a->size > half)
+	if (a->size > 3)
 	{
-		min = stack_min(a);
-		if (ft_stack_indexof(a, min) > (int) a->size / 2)
+		while ((int )a->size > half)
 		{
-			while(*((int *)ft_stacktop(a)->content) != *((int *)min->content))
+			min = stack_min(a);
+			if (ft_stack_indexof(a, min) > (int) a->size / 2)
 			{
-				revrotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "rra\n"));
+				while(*((int *)ft_stacktop(a)->content) != *((int *)min->content))
+				{
+					revrotate_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "rra\n"));
+				}
+			}
+			else
+			{
+				while(*((int *)ft_stacktop(a)->content) != *((int *)min->content))
+				{
+					rotate_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "ra\n"));
+				}
+			}
+			push_b(a, b);
+			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
+		}
+	}
+	else
+	{
+		if (a->size == 2)
+		{
+			if (is_sorted(a->head) == FALSE)
+			{
+				swap_a(a);
+				return("sa\n");
 			}
 		}
 		else
-		{
-			while(*((int *)ft_stacktop(a)->content) != *((int *)min->content))
-			{
-				rotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "ra\n"));
-			}
-		}
-		push_b(a, b);
-		swapnfree(&ret, ft_strjoin(ret, "pb\n"));
+			 test_2_sizeof3(&ret, a);
 	}
 	swapnfree(&ret, ft_strjoin(ret, algo2(a, b)));
 	return (ret);

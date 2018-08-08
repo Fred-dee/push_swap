@@ -63,7 +63,7 @@ static void	help_2(t_stack *a, char **ret)
 	}
 }
 
-static void	test_2(char **ret, t_stack *a, t_stack *b)
+void		test_2_sizeof3(char **ret, t_stack *a)
 {
 	t_list	*tail;
 	t_list	*n2;
@@ -83,11 +83,6 @@ static void	test_2(char **ret, t_stack *a, t_stack *b)
 			help_1(a, ret);
 		else
 			help_2(a, ret);
-	}
-	while (ft_stackempty(b) == FALSE)
-	{
-		push_a(a, b);
-		swapnfree(ret, ft_strjoin(*ret, "pa\n"));
 	}
 }
 
@@ -110,6 +105,11 @@ char		*algo2(t_stack *a, t_stack *b)
 			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
 		}
 	}
-	test_2(&ret, a, b);
+	test_2_sizeof3(&ret, a);
+	while (ft_stackempty(b) == FALSE)
+	{
+		push_a(a, b);
+		swapnfree(&ret, ft_strjoin(ret, "pa\n"));
+	}
 	return (ret);
 }
