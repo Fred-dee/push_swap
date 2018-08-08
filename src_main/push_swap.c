@@ -38,7 +38,7 @@ static void	push_swap(t_stack *a, t_stack *b)
 		i++;
 	} */
 	ft_putstr(ret[choice]);
-	//print_stacks(a, b, "rr");
+	print_stacks(a, b, "rr");
 }
 
 static void	work(int count, char **av)
