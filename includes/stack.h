@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdilapi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 07:29:41 by mdilapi           #+#    #+#             */
-/*   Updated: 2018/08/06 07:29:47 by mdilapi          ###   ########.fr       */
+/*   Created: 2018/07/09 12:13:45 by mdilapi           #+#    #+#             */
+/*   Updated: 2018/07/09 12:13:46 by mdilapi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			ft_stackpush(t_stack *s, t_list *elem);
 t_list			*ft_stackpop(t_stack *s);
 t_stack			*ft_stacknew(void const *content, size_t content_size);
 t_stack			*ft_stackdup(t_stack *s);
+int				ft_stack_indexof(t_stack *s, t_list *elem);
 void			ft_stack_swap_top(t_stack *s);
 void			ft_stackrotate(t_stack *s);
 void			ft_stackrevrotate(t_stack *s);
