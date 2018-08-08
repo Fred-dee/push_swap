@@ -56,6 +56,7 @@ char			*algo1(t_stack *a, t_stack *b);
 char			*algo2(t_stack *a, t_stack *b);
 char			*algo3(t_stack *a, t_stack *b);
 char			*algo4(t_stack *a, t_stack *b);
+char			*algo5(t_stack *a, t_stack *b);
 int				char_count(const char *s, char c);
 void			contains_flags(int ac, char **av, t_flags *flags);
 void			flag_check(t_flags *flag);
