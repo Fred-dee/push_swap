@@ -13,7 +13,7 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-char	*algo3(t_stack *a, t_stack *b)
+char	*algo3(t_stack *a, t_stack *b, int init_half)
 {
 	char	*ret;
 	int		half;
@@ -59,6 +59,6 @@ char	*algo3(t_stack *a, t_stack *b)
 		else
 			 test_2_sizeof3(&ret, a);
 	}
-	swapnfree(&ret, ft_strjoin(ret, algo2(a, b)));
+	swapnfree(&ret, ft_strjoin(ret, algo2(a, b, init_half)));
 	return (ret);
 }

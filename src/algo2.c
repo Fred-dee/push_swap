@@ -86,7 +86,7 @@ void		test_2_sizeof3(char **ret, t_stack *a)
 	}
 }
 
-char		*algo2(t_stack *a, t_stack *b)
+char		*algo2(t_stack *a, t_stack *b, int init_half)
 {
 	t_list	*tmp;
 	char	*ret;
@@ -106,7 +106,7 @@ char		*algo2(t_stack *a, t_stack *b)
 		}
 	}
 	test_2_sizeof3(&ret, a);
-	while (ft_stackempty(b) == FALSE)
+	while (ft_stackempty(b) == FALSE && (int) a->size < init_half)
 	{
 		push_a(a, b);
 		swapnfree(&ret, ft_strjoin(ret, "pa\n"));

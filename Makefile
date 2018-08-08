@@ -16,6 +16,7 @@ SRC_NAME =	algo1.c \
 			algo3.c \
 			algo4.c \
 			algo5.c \
+			algo5_help.c \
 			helper_functions4.c \
 			get_next_line.c \
 			print_functions.c \
