@@ -106,6 +106,11 @@ char		*algo2(t_stack *a, t_stack *b, int init_half)
 		}
 	}
 	test_2_sizeof3(&ret, a);
+	if(a->size == 2 && is_sorted(a->head) == FALSE)
+	{
+		swap_a(a);
+		swapnfree(&ret, ft_strjoin(ret, "sa\n"));
+	}
 	while (ft_stackempty(b) == FALSE && (int) a->size < init_half)
 	{
 		push_a(a, b);
