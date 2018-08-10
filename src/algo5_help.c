@@ -25,21 +25,12 @@ char	*algo5_help(t_stack *a, t_stack *b)
 	{
 		max = stack_max(b);
 		if (*((int *)ft_stacktop(b)->content) == *((int *)max->content))
-<<<<<<< HEAD
 		{
 			push_a(a, b);
 			swapnfree(&ret, ft_strjoin(ret, "pa\n"));
 		}
 		else
 		{
-=======
-		{
-			push_a(a, b);
-			swapnfree(&ret, ft_strjoin(ret, "pa\n"));
-		}
-		else
-		{
->>>>>>> a4140dd61480a574da8e5b08386262d9ba95b984
 			if (ft_stack_indexof(b, max) > (int) b->size / 2)
 			{
 				while(*((int *)ft_stacktop(b)->content) != *((int *)max->content))
@@ -77,8 +68,4 @@ char	*algo5_help(t_stack *a, t_stack *b)
 		}
 	}
 	return (ret);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a4140dd61480a574da8e5b08386262d9ba95b984

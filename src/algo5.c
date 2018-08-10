@@ -63,15 +63,12 @@ char	*algo5(t_stack *a, t_stack *b)
 					swap_s(a, b);
 					swapnfree(&ret, ft_strjoin(ret, "ss\n"));
 				}
-<<<<<<< HEAD
 				else if (b->size >= 2 && *((int *)ft_stacktop(b)->content) < *((int *)b->head->next->content)
 					&& (a->size >= 2 && *((int *)ft_stacktop(a)->content) > *((int *)a->head->next->content)))
 				{
 					swap_s(a, b);
 					swapnfree(&ret, ft_strjoin(ret, "ss\n"));
 				}
-=======
->>>>>>> a4140dd61480a574da8e5b08386262d9ba95b984
 				else if(b->size >= 2 && *((int *)ft_stacktop(b)->content) < *((int *)b->head->next->content))
 				{
 					swap_b(b);
@@ -85,13 +82,8 @@ char	*algo5(t_stack *a, t_stack *b)
 			}
 		}
 		swapnfree(&ret, ft_strjoin(ret, algo3(a, b, half)));
-<<<<<<< HEAD
 		swapnfree(&ret, ft_strjoin(ret, algo5_help(a, b)));
 		//swapnfree(&ret, ft_strjoin(ret, algo5_help2(a, b)));
-=======
-		//swapnfree(&ret, ft_strjoin(ret, algo5_help(a, b)));
-		swapnfree(&ret, ft_strjoin(ret, algo5_help2(a, b)));
->>>>>>> a4140dd61480a574da8e5b08386262d9ba95b984
 		while (ft_stackempty(b) == FALSE)
 		{
 			push_a(a, b);
