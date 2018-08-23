@@ -19,6 +19,7 @@ char	*algo5(t_stack *a, t_stack *b)
 {
 	int		converted[a->size][2];
 	char	*ret;
+	char	*tmp;
 	int		half;
 	int		init_size;
 	int		count;
@@ -81,8 +82,12 @@ char	*algo5(t_stack *a, t_stack *b)
 					swapnfree(&ret, ft_strjoin(ret, "ra\n"));
 			}
 		}
-		swapnfree(&ret, ft_strjoin(ret, algo3(a, b, half)));
-		swapnfree(&ret, ft_strjoin(ret, algo5_help(a, b)));
+		tmp = algo3(a, b, half);
+		swapnfree(&ret, ft_strjoin(ret, tmp));
+		free(tmp);
+		tmp = algo5_help(a, b);
+		swapnfree(&ret, ft_strjoin(ret, tmp));
+		free(tmp);
 		while (ft_stackempty(b) == FALSE)
 		{
 			push_a(a, b);

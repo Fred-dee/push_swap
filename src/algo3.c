@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 char	*algo3(t_stack *a, t_stack *b, int init_half)
 {
 	char	*ret;
+	char	*tmp;
 	int		half;
 	t_list	*min;
 
@@ -59,6 +59,8 @@ char	*algo3(t_stack *a, t_stack *b, int init_half)
 		else
 			 test_2_sizeof3(&ret, a);
 	}
-	swapnfree(&ret, ft_strjoin(ret, algo2(a, b, init_half)));
+	tmp = algo2(a, b, init_half);
+	swapnfree(&ret, ft_strjoin(ret, tmp));
+	free(tmp);
 	return (ret);
 }

@@ -32,7 +32,6 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 {
 	char	*str;
 	int		read_ret;
-	//print_stacks(a, b, "Start:");
 	while ((read_ret = get_next_line(0, &str)) > 0)
 	{
 		select_move(a, b, str);
@@ -47,14 +46,16 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 		else if (ft_strcmp(str, "rrr") == 0)
 			revrotate_r(a, b);
 		else if (ft_strcmp(str, "quit") == 0)
+		{
+			free(str);
 			break ;
+		}
 		if (f->v == 1 && f->c == 0)
 			print_stacks(a, b, str);
 		if (f->v == 1 && f->c == 1)
 			print_stacks_clr(a, b, str);
 		free(str);
 	}
-	//ft_putendl_clr(LIGHT_GREEN, "End.");
 }
 
 static int	work(int count, char **av, t_stack *a)
@@ -92,6 +93,7 @@ static int	parse_content(int ac, char **av, t_flags *flag, t_stack *a)
 			count++;
 		if (work(count - 1, split, a) == 0)
 			return (0);
+		free_split(split);
 	}
 	else
 	{
@@ -123,6 +125,10 @@ int			main(int ac, char **av)
 			ft_putendl("OK");
 		else
 			ft_putendl("KO");
+		ft_stackdel(&a);
+		ft_stackdel(&b);
 	}
+	while (1)
+		;
 	return (0);
 }

@@ -11,19 +11,26 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 static void	push_swap(t_stack *a, t_stack *b)
 {
 	char	*ret;
+	char	*tmp;
 
 	ret = ft_strnew(1);
 	if(a->size < 100)
 	{
-		swapnfree(&ret, ft_strjoin(ret, algo3(a, b, a->size)));
+		tmp = algo3(a, b, a->size);
+		swapnfree(&ret, ft_strjoin(ret, tmp));
 	}
 	else
-		swapnfree(&ret, ft_strjoin(ret, algo5(a, b)));
+	{
+		tmp = algo5(a, b);
+		swapnfree(&ret, ft_strjoin(ret, tmp));
+	}
 	ft_putstr(ret);
+	free(tmp);
 	free(ret);
 }
 
@@ -68,6 +75,7 @@ int			main(int ac, char **av)
 			while (split[count] != '\0')
 				count++;
 			work(count - 1, split);
+			free_split(split);
 		}
 		else
 		{
@@ -75,7 +83,6 @@ int			main(int ac, char **av)
 			work(ac - 2, split);
 		}
 	}
-	while (1)
-		;
+	//while (1);
 	return (0);
 }

@@ -69,9 +69,12 @@ int main(int ac, char *av[])
 			printf("%d\n", *x);
 			head = head->next;
 		}
+		/*
 		printf("Here is the max of the struct\n");
 		head = ft_stackmax(a, &int_cmp);
 		x = (int *)head->content;
-		printf("%d\n", *x);
+		printf("%d\n", *x);*/
+		printf("Deleting the stack\n");
+		ft_stackdel(&a);
 	}
 }

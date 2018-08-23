@@ -80,4 +80,20 @@ void	rank_arr(int arr[][2], int size)
 		}
 		i++;
 	}
+	free(tmp);
+}
+
+void	free_split(char **arr)
+{
+	int i;
+
+	if(arr != NULL)
+	{
+		i = 0;
+		while (arr[i] != 0)
+			free(arr[i++]);
+		free(arr[i]);
+		free(arr);
+	}
+	arr = NULL;
 }
