@@ -16,13 +16,15 @@ static void	push_swap(t_stack *a, t_stack *b)
 {
 	char	*ret;
 
+	ret = ft_strnew(1);
 	if(a->size < 100)
 	{
-		ret = algo3(a, b, a->size);
+		swapnfree(&ret, ft_strjoin(ret, algo3(a, b, a->size)));
 	}
 	else
-		ret = algo5(a, b);
+		swapnfree(&ret, ft_strjoin(ret, algo5(a, b)));
 	ft_putstr(ret);
+	free(ret);
 }
 
 static void	work(int count, char **av)
@@ -47,6 +49,8 @@ static void	work(int count, char **av)
 		}
 		free(x);
 		push_swap(a, b);
+		ft_stackdel(&a);
+		ft_stackdel(&b);
 	}
 }
 
