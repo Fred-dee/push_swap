@@ -17,10 +17,10 @@ char	*algo5_help(t_stack *a, t_stack *b)
 {
 	char	*ret;
 	t_list	*max;
-	int		count;
+	//int		count;
 
 	ret = ft_strnew(1);
-	count = 0;
+	//count = 0;
 	while ((int )b->size > 0 && is_sorted_desc(b->head) == FALSE)
 	{
 		max = stack_max(b);

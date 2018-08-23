@@ -128,7 +128,5 @@ int			main(int ac, char **av)
 		ft_stackdel(&a);
 		ft_stackdel(&b);
 	}
-	while (1)
-		;
 	return (0);
 }
