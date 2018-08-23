@@ -23,7 +23,6 @@ static void	push_swap(t_stack *a, t_stack *b)
 	else
 		ret = algo5(a, b);
 	ft_putstr(ret);
-	//print_stacks(a, b, "rr");
 }
 
 static void	work(int count, char **av)
@@ -72,5 +71,7 @@ int			main(int ac, char **av)
 			work(ac - 2, split);
 		}
 	}
+	while (1)
+		;
 	return (0);
 }

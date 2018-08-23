@@ -76,14 +76,13 @@ char	*algo5(t_stack *a, t_stack *b)
 				}
 			}
 			else
-			{
-				rotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "ra\n"));
+			{	
+					rotate_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "ra\n"));
 			}
 		}
 		swapnfree(&ret, ft_strjoin(ret, algo3(a, b, half)));
 		swapnfree(&ret, ft_strjoin(ret, algo5_help(a, b)));
-		//swapnfree(&ret, ft_strjoin(ret, algo5_help2(a, b)));
 		while (ft_stackempty(b) == FALSE)
 		{
 			push_a(a, b);

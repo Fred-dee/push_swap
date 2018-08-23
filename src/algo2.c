@@ -34,10 +34,15 @@ static void	test_1(char **ret, t_list *tmp, t_stack *a)
 		revrotate_a(a);
 		swapnfree(ret, ft_strjoin(*ret, "rra\n"));
 	}
-	else
+	else if (ft_stack_indexof(a, tmp) <= (int)a->size / 2)
 	{
 		rotate_a(a);
 		swapnfree(ret, ft_strjoin(*ret, "ra\n"));
+	}
+	else
+	{
+		revrotate_a(a);
+		swapnfree(ret, ft_strjoin(*ret, "rra\n"));		
 	}
 }
 
