@@ -83,6 +83,34 @@ void	rank_arr(int arr[][2], int size)
 	free(tmp);
 }
 
+int		get_rank(int arr[][2], int size, int elem)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (elem == arr[i][0])
+			return (arr[i][1]);
+		i++;
+	}
+	return (-1);
+}
+
+int		get_elem_atrank(int arr[][2], int size, int rank)
+{
+	int i;
+
+	i = 0;
+	while (i < size && rank < size)
+	{
+		if (rank == arr[i][1])
+			return (arr[i][0]);
+		i++;
+	}
+	return (-1);
+}
+
 void	free_split(char **arr)
 {
 	int i;
@@ -96,4 +124,26 @@ void	free_split(char **arr)
 		free(arr);
 	}
 	arr = NULL;
+}
+
+t_list	*stack_minnext(t_stack *s, t_list *min)
+{
+	t_list *tmp;
+	t_list *ret;
+
+	ret = NULL;
+	if (s != NULL)
+	{
+		tmp = s->head;
+		ret = tmp;
+		while (tmp != NULL)
+		{
+			if (*((int *)tmp->content) != *((int *)min->content) &&
+				*((int *)tmp->content) < *((int *)ret->content) )
+				ret = tmp;
+			tmp = tmp->next;
+			//printf("stuck in stack_minnext\n");
+		}
+	}
+	return (ret);
 }

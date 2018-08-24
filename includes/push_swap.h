@@ -48,6 +48,7 @@ int				int_cmp(int *a, int *b);
 void			set_swap_colour(char colour[4][8], char *str);
 void			set_rotate_colour(char colour[4][8], char *str);
 t_list			*stack_min(t_stack *s);
+t_list			*stack_minnext(t_stack *s, t_list *min);
 t_list			*stack_min_range(t_stack *s, int range);
 t_list			*stack_max(t_stack *s);
 t_list			*stack_max_range(t_stack *s, int range);
@@ -68,4 +69,6 @@ void			test_2_sizeof3(char **ret, t_stack *a);
 void			stack_to_int(t_stack *s, int arr[][2]);
 void			rank_arr(int arr[][2], int size);
 void			free_split(char **arr);
+int				get_rank(int arr[][2], int size, int elem);
+int				get_elem_atrank(int arr[][2], int size, int rank);
 #endif

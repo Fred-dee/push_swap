@@ -18,6 +18,8 @@ static void	push_swap(t_stack *a, t_stack *b)
 	char	*ret;
 	char	*tmp;
 
+	if (is_sorted(a->head) == TRUE)
+		return ;
 	ret = ft_strnew(1);
 	if(a->size < 100)
 	{

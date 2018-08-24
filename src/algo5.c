@@ -1,20 +1,6 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-int		get_rank(int arr[][2], int size, int elem)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (elem == arr[i][0])
-			return (arr[i][1]);
-		i++;
-	}
-	return (-1);
-}
-
 char	*algo5(t_stack *a, t_stack *b)
 {
 	int		converted[a->size][2];
