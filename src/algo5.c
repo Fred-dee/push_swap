@@ -78,8 +78,15 @@ char	*algo5(t_stack *a, t_stack *b)
 			}
 			else
 			{	
-					rotate_a(a);
-					swapnfree(&ret, ft_strjoin(ret, "ra\n"));
+				if (get_rank(converted, init_size, *((int *)ft_lstgettail(a->head)->content) <= half))
+				{
+					revrotate_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "rra\n"));
+					swap_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "sa\n"));
+				}
+				rotate_a(a);
+				swapnfree(&ret, ft_strjoin(ret, "ra\n"));
 			}
 		}
 		tmp = algo3(a, b, half);

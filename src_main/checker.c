@@ -56,6 +56,7 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 			print_stacks_clr(a, b, str);
 		free(str);
 	}
+	ft_strdel(&str);
 }
 
 static int	work(int count, char **av, t_stack *a)
