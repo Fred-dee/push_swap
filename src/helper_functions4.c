@@ -170,3 +170,23 @@ t_list	*stack_maxnext(t_stack *s, t_list *max)
 	return (ret);
 
 }
+
+int		num_moves(t_list *head, int value)
+{
+	t_list	*tmp;
+	int		i;
+
+
+	tmp = head;
+	if (tmp != NULL)
+		tmp = tmp->next;
+	i = 0;
+	while (tmp != NULL)
+	{
+		if (*((int *)tmp->content) < value)
+			return (i);
+		i++;
+		tmp = tmp->next;
+	}
+	return (0);
+}

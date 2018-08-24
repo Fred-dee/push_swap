@@ -15,16 +15,22 @@ char	*algo5(t_stack *a, t_stack *b)
 	rank_arr(converted, a->size);
 	half = ((int)a->size /2);
 	init_size = (int) a->size;
-	count = 0;
 	if (a->size == 1)
 		return ("");
 	if (is_sorted(a->head) == FALSE)
 	{
 		while ((int) a->size >= half && a->size > 2)
 		{
+			count = 0;
 			if (get_rank(converted, init_size, *((int *)ft_stacktop(a)->content)) <= half)
 			{
-				if(get_rank(converted, init_size, *((int *)ft_stacktop(a)->next->content)) <= half &&
+			 	if (b->size >= 2 && *((int *)ft_stacktop(b)->content) < *((int *)b->head->next->content)
+					&& (a->size >= 2 && *((int *)ft_stacktop(a)->content) > *((int *)a->head->next->content)))
+				{
+					swap_s(a, b);
+					swapnfree(&ret, ft_strjoin(ret, "ss\n"));
+				}
+				else if(get_rank(converted, init_size, *((int *)ft_stacktop(a)->next->content)) <= half &&
 					*((int *)ft_stacktop(a)->next->content) < *((int *)ft_stacktop(a)->content))
 				{
 					swap_a(a);
@@ -43,12 +49,6 @@ char	*algo5(t_stack *a, t_stack *b)
 					rotate_b(b);
 					swapnfree(&ret, ft_strjoin(ret, "rb\n"));
 					count++;
-				}
-				else if (b->size >= 2 && *((int *)ft_stacktop(b)->content) < *((int *)b->head->next->content)
-					&& (a->size >= 2 && *((int *)ft_stacktop(a)->content) > *((int *)a->head->next->content)))
-				{
-					swap_s(a, b);
-					swapnfree(&ret, ft_strjoin(ret, "ss\n"));
 				}
 				else if (b->size >= 2 && *((int *)ft_stacktop(b)->content) < *((int *)b->head->next->content)
 					&& (a->size >= 2 && *((int *)ft_stacktop(a)->content) > *((int *)a->head->next->content)))
@@ -78,14 +78,19 @@ char	*algo5(t_stack *a, t_stack *b)
 		tmp = algo3(a, b, half);
 		swapnfree(&ret, ft_strjoin(ret, tmp));
 		free(tmp);
-		tmp = algo5_help(a, b);
+		while ((int )b->size > half)
+		{
+			push_a(a, b);
+			swapnfree(&ret, ft_strjoin(ret, "pa\n"));			
+		}
+		/*tmp = algo5_help(a, b);
 		swapnfree(&ret, ft_strjoin(ret, tmp));
 		free(tmp);
 		while (ft_stackempty(b) == FALSE)
 		{
 			push_a(a, b);
 			swapnfree(&ret, ft_strjoin(ret, "pa\n"));
-		}
+		}*/
 		//print_stacks(a, b, "ra");
 	}
 	return (ret);
