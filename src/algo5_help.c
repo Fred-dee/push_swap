@@ -17,13 +17,15 @@ char	*algo5_help(t_stack *a, t_stack *b)
 {
 	char	*ret;
 	t_list	*max;
-	//int		count;
+	t_list	*max_next;
+	int		flag;
 
 	ret = ft_strnew(1);
-	//count = 0;
 	while ((int )b->size > 0 && is_sorted_desc(b->head) == FALSE)
 	{
 		max = stack_max(b);
+		max_next = stack_maxnext(b, max);
+		flag = 0;
 		if (*((int *)ft_stacktop(b)->content) == *((int *)max->content))
 		{
 			push_a(a, b);
@@ -33,14 +35,47 @@ char	*algo5_help(t_stack *a, t_stack *b)
 		{
 			if (ft_stack_indexof(b, max) > (int) b->size / 2)
 			{
+				if (max_next != NULL)
+					if (ft_stack_indexof(b, max_next) > (int) a->size / 2 && 
+						ft_stack_indexof(b, max_next) > ft_stack_indexof(b, max))
+					{
+						flag = 1;
+						while(*((int *)ft_stacktop(b)->content) != *((int *)max_next->content))
+						{
+							revrotate_b(b);
+							swapnfree(&ret, ft_strjoin(ret, "rrb\n"));
+						}
+						push_a(a, b);
+						swapnfree(&ret, ft_strjoin(ret, "pa\n"));
+				} 
 				while(*((int *)ft_stacktop(b)->content) != *((int *)max->content))
 				{
 					revrotate_b(b);
 					swapnfree(&ret, ft_strjoin(ret, "rrb\n"));
 				}
+				if (flag == 1)
+				{
+					push_a(a, b);
+					swapnfree(&ret, ft_strjoin(ret, "pa\n"));
+					swap_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "sa\n"));
+				}
 			}
 			else
 			{
+				if (max_next != NULL)
+					if (ft_stack_indexof(b, max_next) <= (int) a->size / 2 && 
+						ft_stack_indexof(b, max_next) < ft_stack_indexof(b, max))
+					{
+						flag = 1;
+						while(*((int *)ft_stacktop(b)->content) != *((int *)max_next->content))
+						{
+							rotate_b(b);
+							swapnfree(&ret, ft_strjoin(ret, "rb\n"));
+						}
+						push_a(a, b);
+						swapnfree(&ret, ft_strjoin(ret, "pa\n"));
+					} 
 				while(*((int *)ft_stacktop(b)->content) != *((int *)max->content))
 				{
 					if(b->size >= 2 && *((int *)ft_stacktop(b)->next->content) == *((int *)max->content))
@@ -54,9 +89,20 @@ char	*algo5_help(t_stack *a, t_stack *b)
 						swapnfree(&ret, ft_strjoin(ret, "rb\n"));		
 					}
 				}
+				if (flag == 1)
+				{
+					push_a(a, b);
+					swapnfree(&ret, ft_strjoin(ret, "pa\n"));
+					swap_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "sa\n"));
+				}
+
 			}
-			push_a(a, b);
-			swapnfree(&ret, ft_strjoin(ret, "pa\n"));
+			if (flag == 0)
+			{
+				push_a(a, b);
+				swapnfree(&ret, ft_strjoin(ret, "pa\n"));
+			}
 		}
 	}
 	if(is_sorted_desc(b->head) == TRUE)

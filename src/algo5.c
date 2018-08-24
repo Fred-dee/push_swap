@@ -86,6 +86,7 @@ char	*algo5(t_stack *a, t_stack *b)
 			push_a(a, b);
 			swapnfree(&ret, ft_strjoin(ret, "pa\n"));
 		}
+		//print_stacks(a, b, "ra");
 	}
 	return (ret);
 }

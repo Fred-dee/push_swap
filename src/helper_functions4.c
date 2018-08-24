@@ -147,3 +147,26 @@ t_list	*stack_minnext(t_stack *s, t_list *min)
 	}
 	return (ret);
 }
+
+t_list	*stack_maxnext(t_stack *s, t_list *max)
+{
+	t_list *tmp;
+	t_list *ret;
+
+	ret = NULL;
+	if (s != NULL)
+	{
+		tmp = s->head;
+		ret = tmp;
+		while (tmp != NULL)
+		{
+			if (*((int *)tmp->content) != *((int *)max->content) &&
+				*((int *)tmp->content) > *((int *)ret->content))
+				ret = tmp;
+			tmp = tmp->next;
+			//printf("stuck in stack_minnext\n");
+		}
+	}
+	return (ret);
+
+}

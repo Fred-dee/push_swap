@@ -51,6 +51,8 @@ char	*algo3(t_stack *a, t_stack *b, int init_half)
 				}
 				if (flag == 1)
 				{
+					push_b(a, b);
+					swapnfree(&ret, ft_strjoin(ret, "pb\n"));
 					swap_b(b);
 					swapnfree(&ret, ft_strjoin(ret, "sb\n"));
 				} 
@@ -71,17 +73,30 @@ char	*algo3(t_stack *a, t_stack *b, int init_half)
 				} 
 				while(*((int *)ft_stacktop(a)->content) != *((int *)min->content))
 				{
-					rotate_a(a);
-					swapnfree(&ret, ft_strjoin(ret, "ra\n"));
+					if(a->size >= 2 && *((int *)ft_stacktop(a)->next->content) == *((int *)min->content))
+					{
+						swap_a(a);
+						swapnfree(&ret, ft_strjoin(ret, "sa\n"));
+					}
+					else
+					{
+						rotate_a(a);
+						swapnfree(&ret, ft_strjoin(ret, "ra\n"));		
+					}
 				}
 				if (flag == 1)
 				{
+					push_b(a, b);
+					swapnfree(&ret, ft_strjoin(ret, "pb\n"));
 					swap_b(b);
 					swapnfree(&ret, ft_strjoin(ret, "sb\n"));
 				}
 			}
-			push_b(a, b);
-			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
+			if (flag == 0)
+			{
+				push_b(a, b);
+				swapnfree(&ret, ft_strjoin(ret, "pb\n"));
+			}
 		}
 	}
 	else

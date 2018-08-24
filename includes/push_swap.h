@@ -49,6 +49,7 @@ void			set_swap_colour(char colour[4][8], char *str);
 void			set_rotate_colour(char colour[4][8], char *str);
 t_list			*stack_min(t_stack *s);
 t_list			*stack_minnext(t_stack *s, t_list *min);
+t_list			*stack_maxnext(t_stack *s, t_list *max);
 t_list			*stack_min_range(t_stack *s, int range);
 t_list			*stack_max(t_stack *s);
 t_list			*stack_max_range(t_stack *s, int range);
