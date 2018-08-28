@@ -16,25 +16,79 @@
 char	*algo5_help(t_stack *a, t_stack *b)
 {
 	char	*ret;
-	t_list	*max;
-	t_list	*max_next;
+	int		half;
 	int		flag;
+	t_list	*max;
+	t_list 	*max_next;
 
 	ret = ft_strnew(1);
-	while ((int )b->size > 0 && is_sorted_desc(b->head) == FALSE)
+	half = (int) b->size / 2;
+	(void)(init_half);
+	while (is_sorted(b->head) == FALSE && b->size > 3)
 	{
 		max = stack_max(b);
 		max_next = stack_maxnext(b, max);
 		flag = 0;
-		
-	}
-	if(is_sorted_desc(b->head) == TRUE)
-	{
-		while(b->size != 0)
+		if (ft_stack_indexof(a, max) > (int) a->size / 2)
+		{	if (max_next != NULL)
+				if (ft_stack_indexof(a, max_next) >= (int) a->size / 2 && 
+					ft_stack_indexof(a, max_next) > ft_stack_indexof(a, max))
+				{
+					flag = 1;
+					while(*((int *)ft_stacktop(a)->content) != *((int *)max_next->content))
+					{
+						revrotate_a(a);
+						swapnfree(&ret, ft_strjoin(ret, "rra\n"));
+					}
+					push_b(a, b);
+					swapnfree(&ret, ft_strjoin(ret, "pb\n"));
+				} 
+			while(*((int *)ft_stacktop(a)->content) != *((int *)max->content))
+			{
+				revrotate_a(a);
+				swapnfree(&ret, ft_strjoin(ret, "rra\n"));
+			}
+		}
+		else
 		{
-			push_a(a, b);
-			swapnfree(&ret, ft_strjoin(ret, "pa\n"));
+			if(max_next != NULL)
+				if (ft_stack_indexof(a, max_next) < (int) a->size / 2 && 
+					ft_stack_indexof(a, max_next) < ft_stack_indexof(a, max))
+				{
+					flag = 1;
+					while(*((int *)ft_stacktop(a)->content) != *((int *)max_next->content))
+					{
+						rotate_a(a);
+						swapnfree(&ret, ft_strjoin(ret, "ra\n"));
+					}
+					push_b(a, b);
+					swapnfree(&ret, ft_strjoin(ret, "pb\n"));
+				} 
+			while(*((int *)ft_stacktop(a)->content) != *((int *)max->content))
+			{
+				if(a->size >= 2 && *((int *)ft_stacktop(a)->next->content) == *((int *)max->content))
+				{
+					swap_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "sa\n"));
+				}
+				else
+				{
+					rotate_a(a);
+					swapnfree(&ret, ft_strjoin(ret, "ra\n"));		
+				}
+			}
+		}
+		if (flag == 1)
+		{
+			push_b(a, b);
+			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
+			swap_b(b);
+			swapnfree(&ret, ft_strjoin(ret, "sb\n"));
+		} 
+		if (flag == 0)
+		{
+			push_b(a, b);
+			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
 		}
 	}
-	return (ret);
 }
