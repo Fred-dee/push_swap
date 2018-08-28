@@ -13,9 +13,21 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
+int		get_position(t_stack *b)
+{
+	int		converted[b->size][2];
+	stack_to_int(b, converted);
+	rank_arr_desc(converted, b->size);
+
+	return (get_rank(converted, b->size, *((int *)ft_stacktop(b)->content)));
+}
+
 char	*algo5_help(t_stack *a, t_stack *b)
 {
-	char	*ret;
+	(void) a;
+	(void) b;
+	return ("");
+	/*char	*ret;
 	int		half;
 	int		flag;
 	t_list	*max;
@@ -90,5 +102,5 @@ char	*algo5_help(t_stack *a, t_stack *b)
 			push_b(a, b);
 			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
 		}
-	}
+	} */
 }

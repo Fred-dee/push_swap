@@ -33,6 +33,56 @@ void	stack_to_int(t_stack *s, int arr[][2])
 	}
 }
 
+void	rank_arr_desc(int arr[][2], int size)
+{
+	int		*tmp;
+	int		i;
+	int		j;
+	int		hold;
+	int		flag;
+
+	tmp = (int *)malloc(sizeof(int) * size);
+	i = 0;
+	while (i < size)
+	{
+		tmp[i] = arr[i][0];
+		i++;
+	}
+	i = 0;
+	while (i < size -1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (tmp[i] < tmp[j])
+			{
+				hold = tmp[i];
+				tmp[i] = tmp[j];
+				tmp[j] = hold;
+			}
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		flag = 0;
+		while (j < size && flag == 0)
+		{
+			if (arr[i][0] == tmp[j])
+			{
+				arr[i][1] = j;
+				flag = 1;
+			}
+			j++;
+		}
+		i++;
+	}
+	free(tmp);
+}
+
 void	rank_arr(int arr[][2], int size)
 {
 	int		*tmp;

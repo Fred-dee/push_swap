@@ -15,13 +15,13 @@
 char	*algo3(t_stack *a, t_stack *b, int init_half)
 {
 	char	*ret;
-	int		half;
+	//int		half;
 	int		flag;
 	t_list	*min;
 	t_list 	*min_next;
 
 	ret = ft_strnew(1);
-	half = (int) a->size / 2;
+	//half = (int) a->size / 2;
 	(void)(init_half);
 	while (is_sorted(a->head) == FALSE && a->size > 3)
 	{

@@ -66,8 +66,10 @@ t_list			*list_min_range(t_list *lst, int range);
 void			test_2_sizeof3(char **ret, t_stack *a);
 void			stack_to_int(t_stack *s, int arr[][2]);
 void			rank_arr(int arr[][2], int size);
+void			rank_arr_desc(int arr[][2], int size);
 void			free_split(char **arr);
 int				get_rank(int arr[][2], int size, int elem);
 int				get_elem_atrank(int arr[][2], int size, int rank);
 int				num_moves(t_list *head, int value);
+int				get_position(t_stack *b);
 #endif
