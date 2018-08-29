@@ -47,7 +47,7 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 			revrotate_r(a, b);
 		else if (ft_strcmp(str, "quit") == 0)
 		{
-			free(str);
+			ft_strdel(&str);
 			break ;
 		}
 		if (f->v == 1 && f->c == 0)
@@ -56,7 +56,8 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 			print_stacks_clr(a, b, str);
 		free(str);
 	}
-	ft_strdel(&str);
+	if (str != NULL)
+		ft_strdel(&str);
 }
 
 static int	work(int count, char **av, t_stack *a)

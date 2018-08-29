@@ -35,12 +35,12 @@ char	*algo5(t_stack *a, t_stack *b)
 				rank[1] = get_position(b);
 				push_a(a, b);
 				if (rank[1] > (int)b->size / 2)
-					rank[3] = 1;
+					rank[2] = 1;
 				else
-					rank[3] = 0;
+					rank[2] = 0;
 				while (count < rank[1])
 				{
-					if (rank[3] == 0)
+					if (rank[2] == 0)
 					{
 						if (get_rank(converted, init_size, *((int *)ft_stacktop(a)->content))
 							>= half)
@@ -74,7 +74,7 @@ char	*algo5(t_stack *a, t_stack *b)
 				swapnfree(&ret, ft_strjoin(ret, "pb\n"));
 				while (rank[1] > 0)
 				{
-					if (rank[3] == 0)
+					if (rank[2] == 0)
 					{
 						revrotate_b(b);
 						swapnfree(&ret, ft_strjoin(ret, "rrb\n"));
