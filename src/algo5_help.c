@@ -13,94 +13,83 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-int		get_position(t_stack *b)
+int		get_position(t_stack *b, t_list *elem)
 {
-	int		converted[b->size][2];
-	stack_to_int(b, converted);
-	rank_arr_desc(converted, b->size);
+	int 	count;
+	t_list	*tmp;
 
-	return (get_rank(converted, b->size, *((int *)ft_stacktop(b)->content)));
+	if (b->size > 0 && is_sorted_desc(b->head))
+	{
+		count = 0;
+		tmp = b->head;
+		while (tmp != NULL && elem != NULL
+			&& *(int *)elem->content <  *(int *) tmp->content)
+		{
+			tmp = tmp->next;
+			count++;
+		}
+		return (count);		
+	}
+	return (0);
 }
 
-char	*algo5_help(t_stack *a, t_stack *b)
+void	apply_rota(t_stack *a, char **ret, int search, int dir)
 {
-	(void) a;
-	(void) b;
-	return ("");
-	/*char	*ret;
-	int		half;
-	int		flag;
-	t_list	*max;
-	t_list 	*max_next;
-
-	ret = ft_strnew(1);
-	half = (int) b->size / 2;
-	(void)(init_half);
-	while (is_sorted(b->head) == FALSE && b->size > 3)
-	{
-		max = stack_max(b);
-		max_next = stack_maxnext(b, max);
-		flag = 0;
-		if (ft_stack_indexof(a, max) > (int) a->size / 2)
-		{	if (max_next != NULL)
-				if (ft_stack_indexof(a, max_next) >= (int) a->size / 2 && 
-					ft_stack_indexof(a, max_next) > ft_stack_indexof(a, max))
-				{
-					flag = 1;
-					while(*((int *)ft_stacktop(a)->content) != *((int *)max_next->content))
-					{
-						revrotate_a(a);
-						swapnfree(&ret, ft_strjoin(ret, "rra\n"));
-					}
-					push_b(a, b);
-					swapnfree(&ret, ft_strjoin(ret, "pb\n"));
-				} 
-			while(*((int *)ft_stacktop(a)->content) != *((int *)max->content))
+		if (dir == 1)
+		{
+			while (*(int *)a->head->content != search)
 			{
 				revrotate_a(a);
-				swapnfree(&ret, ft_strjoin(ret, "rra\n"));
+				swapnfree(ret, ft_strjoin(*ret, "rra\n"));
 			}
 		}
 		else
 		{
-			if(max_next != NULL)
-				if (ft_stack_indexof(a, max_next) < (int) a->size / 2 && 
-					ft_stack_indexof(a, max_next) < ft_stack_indexof(a, max))
-				{
-					flag = 1;
-					while(*((int *)ft_stacktop(a)->content) != *((int *)max_next->content))
-					{
-						rotate_a(a);
-						swapnfree(&ret, ft_strjoin(ret, "ra\n"));
-					}
-					push_b(a, b);
-					swapnfree(&ret, ft_strjoin(ret, "pb\n"));
-				} 
-			while(*((int *)ft_stacktop(a)->content) != *((int *)max->content))
+			while (*(int *)a->head->content != search)
 			{
-				if(a->size >= 2 && *((int *)ft_stacktop(a)->next->content) == *((int *)max->content))
-				{
-					swap_a(a);
-					swapnfree(&ret, ft_strjoin(ret, "sa\n"));
-				}
-				else
-				{
-					rotate_a(a);
-					swapnfree(&ret, ft_strjoin(ret, "ra\n"));		
-				}
-			}
+				rotate_a(a);
+				swapnfree(ret, ft_strjoin(*ret, "ra\n"));
+			}	
 		}
-		if (flag == 1)
+}
+
+void	apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir)
+{
+	int	count;
+
+	count = 0;
+	if (dir == 0)
+	{
+		while (count < pos)
 		{
-			push_b(a, b);
-			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
-			swap_b(b);
-			swapnfree(&ret, ft_strjoin(ret, "sb\n"));
-		} 
-		if (flag == 0)
-		{
-			push_b(a, b);
-			swapnfree(&ret, ft_strjoin(ret, "pb\n"));
+			rotate_b(b);
+			swapnfree(ret, ft_strjoin(*ret, "rb\n"));
+			count++;
 		}
-	} */
+		push_b(a, b);
+		swapnfree(ret, ft_strjoin(*ret, "pb\n"));
+		while (count > 0)
+		{
+			revrotate_b(b);
+			swapnfree(ret, ft_strjoin(*ret, "rrb\n"));
+			count--;
+		}
+	}
+	else
+	{
+		while(count < (int)b->size - pos)
+		{
+			revrotate_b(b);
+			swapnfree(ret, ft_strjoin(*ret, "rrb\n"));
+			count++;				
+		}
+		push_b(a, b);
+		swapnfree(ret, ft_strjoin(*ret, "pb\n"));
+		while (count > -1)
+		{
+			rotate_b(b);
+			swapnfree(ret, ft_strjoin(*ret, "rb\n"));
+			count--;				
+		}
+	}
 }

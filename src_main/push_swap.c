@@ -85,6 +85,5 @@ int			main(int ac, char **av)
 			work(ac - 2, split);
 		}
 	}
-	//while (1);
 	return (0);
 }

@@ -71,5 +71,7 @@ void			free_split(char **arr);
 int				get_rank(int arr[][2], int size, int elem);
 int				get_elem_atrank(int arr[][2], int size, int rank);
 int				num_moves(t_list *head, int value);
-int				get_position(t_stack *b);
+int				get_position(t_stack *b, t_list *elem);
+void			apply_rota(t_stack *a, char **ret, int search, int dir);
+void			apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir);
 #endif

@@ -31,6 +31,9 @@ void	stack_to_int(t_stack *s, int arr[][2])
 			i++;
 		}	
 	}
+	else
+		printf("The stack is empthy\n");
+
 }
 
 void	rank_arr_desc(int arr[][2], int size)
