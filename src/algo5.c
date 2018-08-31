@@ -16,6 +16,8 @@ char	*algo5(t_stack *a, t_stack *b)
 	char	*ret;
 	int		count;
 	t_list	*iter;
+	int		score[3];
+	int		sum;
 
 	ret = ft_strnew(1);
 	if (a->size == 1)
@@ -42,8 +44,26 @@ char	*algo5(t_stack *a, t_stack *b)
 			count = 0;
 			while (iter != NULL)
 			{
-				int x = get_position(b, iter);
-				if (count + x < rank[1] + rank[2])
+				score[2] = get_position(b, iter);
+				if (count > (int) a->size / 2)
+					score[0] = (int) a->size - count + 1;
+				else
+					score[0] = count;
+				if (score[1] > (int)b->size / 2)
+					score[1] = 2 * ((int) b->size - score[2]);
+				else
+					score[1] = 2 * score[2];
+				sum = 0;
+				if(rank[1] > (int) a->size /2)
+					sum += (int) a->size /2;
+				else
+					sum += rank[1];
+				if (rank[2] > (int) b->size / 2)
+					sum += 2 * ((int) b->size - rank[2]);
+				else
+					sum += 2 * rank[2];
+
+				if (score[0] + score[1] < sum)
 				{
 					rank[0] = *((int * )iter->content);
 					rank[1] = count;
@@ -60,6 +80,7 @@ char	*algo5(t_stack *a, t_stack *b)
 				count++;
 				iter = iter->next;
 			}
+
 			apply_rota(a, &ret, rank[0], rank[3]);
 			apply_rotb(a, b, &ret, rank[2], rank[4]);
 		}
