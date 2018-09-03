@@ -103,7 +103,7 @@ void	apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir, int count)
 			revrotate_b(b);
 			swapnfree(ret, ft_strjoin(*ret, "rrb\n"));
 			count--;
-		}
+		} 
 	}
 	else
 	{
