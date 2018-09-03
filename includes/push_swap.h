@@ -72,7 +72,7 @@ void			test_2_sizeof3(char **ret, t_stack *a);
 void			free_split(char **arr);
 int				get_position(t_stack *b, t_list *elem);
 void			apply_rota(t_stack *a, char **ret, int search, int dir);
-void			apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir);
+void			apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir, int count);
 void			apply_rotr(t_stack *a, t_stack *b, t_rank *rank, char **ret);
 void			apply_revrotr(t_stack *a, t_stack *b, t_rank *rank, char **ret);
 #endif

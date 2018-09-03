@@ -44,7 +44,7 @@ void	apply_rotr(t_stack *a, t_stack *b, t_rank *rank, char **ret)
 		count++;
 	}
 	apply_rota(a, ret, rank->val, 0);
-	apply_rotb(a, b, ret, rank->pos_b - count, 0);
+	apply_rotb(a, b, ret, rank->pos_b, 0, count);
 
 }
 
@@ -60,7 +60,7 @@ void	apply_revrotr(t_stack *a, t_stack *b, t_rank *rank, char **ret)
 		count++;
 	}
 	apply_rota(a, ret, rank->val, 1);
-	apply_rotb(a, b, ret, (int)b->size - rank->pos_b - count, 1);
+	apply_rotb(a, b, ret, rank->pos_b, 1, count);
 }
 
 void	apply_rota(t_stack *a, char **ret, int search, int dir)
@@ -83,11 +83,11 @@ void	apply_rota(t_stack *a, char **ret, int search, int dir)
 	}
 }
 
-void	apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir)
+void	apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir, int count)
 {
-	int	count;
+	//int	count;
 
-	count = 0;
+	//count = 0;
 	if (dir == 0)
 	{
 		while (count < pos)

@@ -71,9 +71,7 @@ char	*algo5(t_stack *a, t_stack *b)
 	char	*ret;
 	int		score[3];
 	t_rank	rank;
-	int		count;
 
-	count = 0;
 	ret = ft_strnew(1);
 	if (a->size == 1)
 		return ("");
@@ -91,7 +89,7 @@ char	*algo5(t_stack *a, t_stack *b)
 			else
 			{
 				apply_rota(a, &ret, rank.val, rank.dir_a);
-				apply_rotb(a, b, &ret, rank.pos_b, rank.dir_b, &count);
+				apply_rotb(a, b, &ret, rank.pos_b, rank.dir_b, 0);
 			}
 		}
 	}
