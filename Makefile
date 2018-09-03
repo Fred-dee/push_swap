@@ -11,8 +11,7 @@ INC_PATH = ./includes/
 
 # Name
 
-SRC_NAME =	algo2.c \
-			algo3.c \
+SRC_NAME =	algo3.c \
 			algo5.c \
 			algo5_help.c \
 			helper_functions4.c \

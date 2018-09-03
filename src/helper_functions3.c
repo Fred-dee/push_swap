@@ -27,94 +27,47 @@ void	flag_check(t_flags *flag)
 	}	
 }
 
-t_list	*stack_min_range(t_stack *s, int range)
+static void	help_1(t_stack *a, char **ret)
 {
-	t_list *tmp;
-	t_list *ret;
-	int		i;
-
-	ret = NULL;
-	i = 0;
-	if (s != NULL)
+	revrotate_a(a);
+	swapnfree(ret, ft_strjoin(*ret, "rra\n"));
+	if (*(int *)a->head->content > *(int *)a->head->next->content)
 	{
-		tmp = s->head;
-		ret = tmp;
-		while (tmp != NULL && i < range)
-		{
-			i++;
-			if (*((int *)tmp->content) < *((int *)ret->content))
-				ret = tmp;
-			tmp = tmp->next;
-		}
+		swap_a(a);
+		swapnfree(ret, ft_strjoin(*ret, "sa\n"));
 	}
-	return (ret);
 }
 
-t_list *list_max_range(t_list *lst, int range)
+static void	help_2(t_stack *a, char **ret)
 {
-	t_list	*tmp;
-	t_list	*ret;
-	int		i;
-
-	ret = NULL;
-	i = 0;
-	if(lst != NULL)
+	rotate_a(a);
+	swapnfree(ret, ft_strjoin(*ret, "ra\n"));
+	if (*(int *)a->head->content > *(int *)a->head->next->content)
 	{
-		tmp = lst;
-		ret = tmp;
-		while (tmp != NULL && i < range)
-		{
-			i++;
-			if (*((int *)tmp->content) > *((int *)ret->content))
-				ret = tmp;
-			tmp = tmp->next;
-		}
+		swap_a(a);
+		swapnfree(ret, ft_strjoin(*ret, "sa\n"));
 	}
-	return (ret);
 }
 
-t_list *list_min_range(t_list *lst, int range)
+void		test_2_sizeof3(char **ret, t_stack *a)
 {
-	t_list	*tmp;
-	t_list	*ret;
-	int		i;
+	t_list	*tail;
+	t_list	*n2;
+	t_list	*max;
 
-	ret = NULL;
-	i = 0;
-	if(lst != NULL)
+	if (is_sorted(a->head) == FALSE && a->size == 3)
 	{
-		tmp = lst;
-		ret = tmp;
-		while (tmp != NULL && i < range)
+		tail = ft_lstgettail(a->head);
+		n2 = a->head->next;
+		max = stack_max(a);
+		if (*((int *)tail->content) == *((int *)max->content))
 		{
-			i++;
-			if (*((int *)tmp->content) < *((int *)ret->content))
-				ret = tmp;
-			tmp = tmp->next;
+			swap_a(a);
+			swapnfree(ret, ft_strjoin(*ret, "sa\n"));
 		}
+		else if (n2 != NULL && *((int *)n2->content) == *((int *)max->content))
+			help_1(a, ret);
+		else
+			help_2(a, ret);
 	}
-	return (ret);
-}
-
-t_list	*stack_max_range(t_stack *s, int range)
-{
-	t_list *tmp;
-	t_list *ret;
-	int		i;
-
-	ret = NULL;
-	i = 0;
-	if (s != NULL)
-	{
-		tmp = s->head;
-		ret = tmp;
-		while (tmp != NULL && i < range)
-		{
-			i++;
-			if (*((int *)tmp->content) > *((int *)ret->content))
-				ret = tmp;
-			tmp = tmp->next;
-		}
-	}
-	return (ret);
 }

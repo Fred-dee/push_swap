@@ -2,14 +2,6 @@
 #include <stdio.h>
 
 
-/**
-** rank[0] = int that im selecting
-** rank[1] = position of number in a
-** rank[2] = rank of number in b
-** rank[3] = direction 0 is r and 1 is rr in A
-** rank[4] = direction 0 is r and 1 is rr in B
-**/
-
 void	first_two(t_stack *a, t_stack *b, char **ret)
 {
 	push_b(a, b);
@@ -79,7 +71,9 @@ char	*algo5(t_stack *a, t_stack *b)
 	char	*ret;
 	int		score[3];
 	t_rank	rank;
+	int		count;
 
+	count = 0;
 	ret = ft_strnew(1);
 	if (a->size == 1)
 		return ("");
@@ -97,7 +91,7 @@ char	*algo5(t_stack *a, t_stack *b)
 			else
 			{
 				apply_rota(a, &ret, rank.val, rank.dir_a);
-				apply_rotb(a, b, &ret, rank.pos_b, rank.dir_b);
+				apply_rotb(a, b, &ret, rank.pos_b, rank.dir_b, &count);
 			}
 		}
 	}

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include <push_swap.h>
 
 int		get_position(t_stack *b, t_list *elem)
 {
