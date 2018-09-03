@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include <push_swap.h>
 
 t_list	*stack_min(t_stack *s)
 {
@@ -76,7 +76,7 @@ int		is_sorted(t_list *head)
 	return (TRUE);
 }
 
-int		duplicates(int ac, long arr[])
+int		duplicates(int ac, int arr[])
 {
 	int	tmp;
 	int	i;
@@ -99,7 +99,7 @@ int		is_valid(int ac, char *av[])
 {
 	int		tmp;
 	char	*str;
-	long	arr[ac];
+	int		arr[ac];
 
 	tmp = ac;
 	while (tmp >= 0)
@@ -113,8 +113,8 @@ int		is_valid(int ac, char *av[])
 				return (FALSE);
 			str++;
 		}
-		arr[tmp] = ft_atol(av[tmp]);
-		if (arr[tmp] > MAX_INT || arr[tmp] < MIN_INT)
+		arr[tmp] = ft_atoi(av[tmp]);
+		if (ft_strcmp(ft_itoa(arr[tmp]), av[tmp]) != 0)
 			return (FALSE);
 		tmp--;
 	}

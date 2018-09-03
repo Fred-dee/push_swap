@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include <stdio.h>
+#include <push_swap.h>
 
 void	print_rest(t_list *head_a, t_list *head_b, t_list *aterm, t_list *bterm)
 {

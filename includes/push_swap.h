@@ -25,6 +25,17 @@ typedef struct	s_flags
 	int			offset;
 }				t_flags;
 
+typedef struct	s_rank
+{
+	int			val;
+	int			pos_a;
+	int			pos_b;
+	int			dir_a;
+	int			dir_b;
+	int			mov_a;
+	int			mov_b;
+}				t_rank;
+
 void			swap_a(t_stack *a);
 void			swap_b(t_stack *b);
 void			swap_s(t_stack *a, t_stack *b);
@@ -74,6 +85,6 @@ int				num_moves(t_list *head, int value);
 int				get_position(t_stack *b, t_list *elem);
 void			apply_rota(t_stack *a, char **ret, int search, int dir);
 void			apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir);
-void			apply_rotr(t_stack *a, t_stack *b, int rank[7], char **ret);
-void			apply_revrotr(t_stack *a, t_stack *b, int rank[7], char	**ret);
+void			apply_rotr(t_stack *a, t_stack *b, t_rank *rank, char **ret);
+void			apply_revrotr(t_stack *a, t_stack *b, t_rank *rank, char **ret);
 #endif

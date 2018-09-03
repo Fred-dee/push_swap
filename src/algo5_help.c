@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 int		get_position(t_stack *b, t_list *elem)
 {
@@ -33,35 +32,35 @@ int		get_position(t_stack *b, t_list *elem)
 	return (0);
 }
 
-void	apply_rotr(t_stack *a, t_stack *b, int rank[7], char **ret)
+void	apply_rotr(t_stack *a, t_stack *b, t_rank *rank, char **ret)
 {
 	int	count;
 
 	count = 0;
-	while (*(int *)a->head->content != rank[0] && count < rank[2])
+	while (*(int *)a->head->content != rank->val && count < rank->pos_b)
 	{
 		rotate_r(a, b);
 		swapnfree(ret, ft_strjoin(*ret, "rr\n"));
 		count++;
 	}
-	apply_rota(a, ret, rank[0], 0);
-	apply_rotb(a, b, ret, rank[2] - count, 0);
+	apply_rota(a, ret, rank->val, 0);
+	apply_rotb(a, b, ret, rank->pos_b - count, 0);
 
 }
 
-void	apply_revrotr(t_stack *a, t_stack *b, int rank[7], char	**ret)
+void	apply_revrotr(t_stack *a, t_stack *b, t_rank *rank, char **ret)
 {
 	int	count;
 
 	count = 0;
-	while (*(int *)a->head->content != rank[0] && count < (int) b->size - rank[2])
+	while (*(int *)a->head->content != rank->val && count < (int) b->size - rank->pos_b)
 	{
 		revrotate_r(a, b);
 		swapnfree(ret, ft_strjoin(*ret, "rrr\n"));
 		count++;
 	}
-	apply_rota(a, ret, rank[0], 1);
-	apply_rotb(a, b, ret, (int)b->size - rank[2] - count, 1);
+	apply_rota(a, ret, rank->val, 1);
+	apply_rotb(a, b, ret, (int)b->size - rank->pos_b - count, 1);
 }
 
 void	apply_rota(t_stack *a, char **ret, int search, int dir)

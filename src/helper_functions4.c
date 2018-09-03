@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include <stdio.h>
-
+#include <push_swap.h>
 
 void	stack_to_int(t_stack *s, int arr[][2])
 {
@@ -31,9 +29,6 @@ void	stack_to_int(t_stack *s, int arr[][2])
 			i++;
 		}	
 	}
-	else
-		printf("The stack is empthy\n");
-
 }
 
 void	rank_arr_desc(int arr[][2], int size)
@@ -195,7 +190,6 @@ t_list	*stack_minnext(t_stack *s, t_list *min)
 				*((int *)tmp->content) < *((int *)ret->content) )
 				ret = tmp;
 			tmp = tmp->next;
-			//printf("stuck in stack_minnext\n");
 		}
 	}
 	return (ret);
@@ -217,11 +211,9 @@ t_list	*stack_maxnext(t_stack *s, t_list *max)
 				*((int *)tmp->content) > *((int *)ret->content))
 				ret = tmp;
 			tmp = tmp->next;
-			//printf("stuck in stack_minnext\n");
 		}
 	}
 	return (ret);
-
 }
 
 int		num_moves(t_list *head, int value)

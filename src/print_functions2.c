@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include <stdio.h>
+#include <push_swap.h>
 
 int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 {
