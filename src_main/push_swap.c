@@ -32,6 +32,7 @@ static void	push_swap(t_stack *a, t_stack *b)
 		swapnfree(&ret, ft_strjoin(ret, tmp));
 	}
 	ft_putstr(ret);
+	//print_stacks(a, b, "ra");
 	free(tmp);
 	free(ret);
 }
