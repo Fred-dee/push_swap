@@ -16,14 +16,24 @@ int		get_position(t_stack *b, t_list *elem)
 {
 	int 	count;
 	t_list	*tmp;
+	t_list	*extremities;
+	int		val;
 
-	if (b->size > 0 && is_sorted_desc(b->head))
+	if (b->size > 0 && elem != NULL)
 	{
-		count = 0;
+		count = 1;
 		tmp = b->head;
-		while (tmp != NULL && elem != NULL
-			&& *(int *)elem->content <  *(int *) tmp->content)
+		extremities = stack_max(b);
+		val = *(int *)elem->content;
+		if (val > *(int *)extremities->content)
+				return (ft_stack_indexof(b, extremities));
+		extremities = stack_min(b);
+		if (val < *(int *)extremities->content)
+			return (ft_stack_indexof(b, stack_max(b)));
+		while (tmp->next != NULL)
 		{
+			if (*(int *)tmp->content > val && *(int *)tmp->next->content < val)
+				return(count);
 			tmp = tmp->next;
 			count++;
 		}
@@ -85,9 +95,7 @@ void	apply_rota(t_stack *a, char **ret, int search, int dir)
 
 void	apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir, int count)
 {
-	//int	count;
 
-	//count = 0;
 	if (dir == 0)
 	{
 		while (count < pos)
@@ -98,12 +106,6 @@ void	apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir, int count)
 		}
 		push_b(a, b);
 		swapnfree(ret, ft_strjoin(*ret, "pb\n"));
-		while (count > 0)
-		{
-			revrotate_b(b);
-			swapnfree(ret, ft_strjoin(*ret, "rrb\n"));
-			count--;
-		} 
 	}
 	else
 	{
@@ -115,11 +117,5 @@ void	apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir, int count)
 		}
 		push_b(a, b);
 		swapnfree(ret, ft_strjoin(*ret, "pb\n"));
-		while (count > -1)
-		{
-			rotate_b(b);
-			swapnfree(ret, ft_strjoin(*ret, "rb\n"));
-			count--;				
-		}
 	}
 }

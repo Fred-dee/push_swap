@@ -61,9 +61,34 @@ void	init_rank(t_rank *rank, t_stack *a, t_stack *b)
 	rank->dir_a = 0;
 	rank->mov_a = 0;
 	if (rank->pos_b > (int) b->size / 2)
+	{
 		rank->mov_b = 2 * ((int) b->size - rank->pos_b);
+		rank->dir_b = 1;
+	}
 	else
+	{
 		rank->mov_b = 2 * rank->pos_b;
+		rank->dir_b = 0;
+	}
+}
+
+void	final_rotates(t_stack *b, char **ret)
+{
+	t_list	*tmp;
+
+	tmp = stack_max(b);
+	if (ft_stack_indexof(b, tmp) > (int)b->size / 2)
+		while (*(int *)ft_stacktop(b)->content != *(int *)tmp->content)
+		{
+			revrotate_b(b);
+			swapnfree(ret, ft_strjoin(*ret, "rrb\n"));
+		}
+	else
+		while (*(int *)ft_stacktop(b)->content != *(int *)tmp->content)
+		{
+			rotate_b(b);
+			swapnfree(ret, ft_strjoin(*ret, "rb\n"));
+		}
 }
 
 char	*algo5(t_stack *a, t_stack *b)
@@ -71,6 +96,7 @@ char	*algo5(t_stack *a, t_stack *b)
 	char	*ret;
 	int		score[3];
 	t_rank	rank;
+
 
 	ret = ft_strnew(1);
 	if (a->size == 1)
@@ -93,6 +119,7 @@ char	*algo5(t_stack *a, t_stack *b)
 			}
 		}
 	}
+	final_rotates(b, &ret);
 	while (b->size > 0)
 	{
 		push_a(a, b);
