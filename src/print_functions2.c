@@ -32,7 +32,8 @@ int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 		head_b = head_b->next;
 		ft_putchar('\n');
 	}
-	while (head_b != NULL && head_a != NULL && head_b != tail_b && head_a != tail_a)
+	while (head_b != NULL && head_a != NULL &&
+		head_b != tail_b && head_a != tail_a)
 	{
 		print_single(WHITE, head_b, *((int *)head_a->content));
 		head_a = head_a->next;
@@ -53,15 +54,6 @@ int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 	}
 	ft_putendl("\n_\t_\na\tb");
 	return (1);
-}
-
-void	print_single(char const *colour, t_list *head, int value)
-{
-	ft_putnbr_clr(colour, value);
-	if (head != NULL)
-		ft_putchar('\t');
-	else
-		ft_putchar('\n');
 }
 
 void	set_rotate_colour_help(char colour[4][8], char *str)

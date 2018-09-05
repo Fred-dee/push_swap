@@ -26,20 +26,21 @@ static void	select_move(t_stack *a, t_stack *b, char *str)
 		push_b(a, b);
 	else if (ft_strcmp(str, "ra") == 0)
 		rotate_a(a);
+	else if (ft_strcmp(str, "rb") == 0)
+		rotate_b(b);
+	else if (ft_strcmp(str, "rr") == 0)
+		rotate_r(a, b);
 }
 
 static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 {
 	char	*str;
 	int		read_ret;
+
 	while ((read_ret = get_next_line(0, &str)) > 0)
 	{
 		select_move(a, b, str);
-		if (ft_strcmp(str, "rb") == 0)
-			rotate_b(b);
-		else if (ft_strcmp(str, "rr") == 0)
-			rotate_r(a, b);
-		else if (ft_strcmp(str, "rra") == 0)
+		if (ft_strcmp(str, "rra") == 0)
 			revrotate_a(a);
 		else if (ft_strcmp(str, "rrb") == 0)
 			revrotate_b(b);
@@ -54,7 +55,7 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 			print_stacks(a, b, str);
 		if (f->v == 1 && f->c == 1)
 			print_stacks_clr(a, b, str);
-		free(str);
+		ft_strdel(&str);
 	}
 	if (str != NULL)
 		ft_strdel(&str);

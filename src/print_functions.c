@@ -124,11 +124,13 @@ void	print_stacks(t_stack *a, t_stack *b, char *str)
 	head_a = ft_stacktop(a);
 	head_b = ft_stacktop(b);
 	ft_putendl_clr(LIGHT_BLUE, str);
-	if(ft_strcmp(str, "pa") == 0 || ft_strcmp(str, "pb") == 0
-		||ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0
-		|| ft_strcmp(str, "ss") == 0 ||ft_strcmp(str, "ra") == 0 || ft_strcmp(str, "rb") == 0
+	if (ft_strcmp(str, "pa") == 0 || ft_strcmp(str, "pb") == 0
+		|| ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0
+		|| ft_strcmp(str, "ss") == 0 || ft_strcmp(str, "ra") == 0 ||
+		ft_strcmp(str, "rb") == 0
 		|| ft_strcmp(str, "rr") == 0 || ft_strcmp(str, "rra") == 0 ||
-		ft_strcmp(str, "rrb") == 0 || ft_strcmp(str, "rrr") == 0 || ft_strcmp(str, "Start:") == 0)
+		ft_strcmp(str, "rrb") == 0 || ft_strcmp(str, "rrr") == 0 ||
+		ft_strcmp(str, "Start:") == 0)
 		print_rest(head_a, head_b, NULL, NULL);
 	else
 		ft_putstr_clr(RED, "Invalid move selected\n");

@@ -16,7 +16,7 @@ void	free_split(char **arr)
 {
 	int i;
 
-	if(arr != NULL)
+	if (arr != NULL)
 	{
 		i = 0;
 		while (arr[i] != 0)
@@ -40,7 +40,7 @@ t_list	*stack_minnext(t_stack *s, t_list *min)
 		while (tmp != NULL)
 		{
 			if (*((int *)tmp->content) != *((int *)min->content) &&
-				*((int *)tmp->content) < *((int *)ret->content) )
+				*((int *)tmp->content) < *((int *)ret->content))
 				ret = tmp;
 			tmp = tmp->next;
 		}
@@ -69,3 +69,21 @@ t_list	*stack_maxnext(t_stack *s, t_list *max)
 	return (ret);
 }
 
+void	final_rotates(t_stack *b, char **ret)
+{
+	t_list	*tmp;
+
+	tmp = stack_max(b);
+	if (ft_stack_indexof(b, tmp) > (int)b->size / 2)
+		while (*(int *)ft_stacktop(b)->content != *(int *)tmp->content)
+		{
+			revrotate_b(b);
+			swapnfree(ret, ft_strjoin(*ret, "rrb\n"));
+		}
+	else
+		while (*(int *)ft_stacktop(b)->content != *(int *)tmp->content)
+		{
+			rotate_b(b);
+			swapnfree(ret, ft_strjoin(*ret, "rb\n"));
+		}
+}

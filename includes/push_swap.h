@@ -62,7 +62,7 @@ t_list			*stack_minnext(t_stack *s, t_list *min);
 t_list			*stack_maxnext(t_stack *s, t_list *max);
 t_list			*stack_max(t_stack *s);
 void			swapnfree(char **var, char *new_val);
-char			*algo3(t_stack *a, t_stack *b, int init_half);
+char			*algo3(t_stack *a, t_stack *b);
 char			*algo5(t_stack *a, t_stack *b);
 char			*algo5_help(t_stack *a, t_stack *b);
 int				char_count(const char *s, char c);
@@ -72,7 +72,8 @@ void			test_2_sizeof3(char **ret, t_stack *a);
 void			free_split(char **arr);
 int				get_position(t_stack *b, t_list *elem);
 void			apply_rota(t_stack *a, char **ret, int search, int dir);
-void			apply_rotb(t_stack *a, t_stack *b, char **ret, int pos, int dir, int count);
+void			apply_rotb(t_stack *b, char **ret, t_rank *rank, int count);
 void			apply_rotr(t_stack *a, t_stack *b, t_rank *rank, char **ret);
 void			apply_revrotr(t_stack *a, t_stack *b, t_rank *rank, char **ret);
+void			final_rotates(t_stack *b, char **ret);
 #endif

@@ -18,6 +18,7 @@ SRC_NAME =	algo3.c \
 			get_next_line.c \
 			print_functions.c \
 			print_functions2.c \
+			print_functions3.c \
 			push_functions.c \
 			swap_functions.c \
 			helper_functions.c \

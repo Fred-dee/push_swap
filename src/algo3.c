@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include <push_swap.h>
 
-char	*algo3(t_stack *a, t_stack *b, int init_half)
+char	*algo3(t_stack *a, t_stack *b)
 {
 	char	*ret;
 	int		flag;
@@ -20,7 +20,6 @@ char	*algo3(t_stack *a, t_stack *b, int init_half)
 	t_list 	*min_next;
 
 	ret = ft_strnew(1);
-	(void)(init_half);
 	while (is_sorted(a->head) == FALSE && a->size > 3)
 	{
 		min = stack_min(a);

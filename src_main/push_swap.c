@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 static void	push_swap(t_stack *a, t_stack *b)
 {
@@ -21,9 +20,9 @@ static void	push_swap(t_stack *a, t_stack *b)
 	if (is_sorted(a->head) == TRUE)
 		return ;
 	ret = ft_strnew(1);
-	if(a->size < 100)
+	if (a->size < 100)
 	{
-		tmp = algo3(a, b, a->size);
+		tmp = algo3(a, b);
 		swapnfree(&ret, ft_strjoin(ret, tmp));
 	}
 	else
@@ -32,7 +31,6 @@ static void	push_swap(t_stack *a, t_stack *b)
 		swapnfree(&ret, ft_strjoin(ret, tmp));
 	}
 	ft_putstr(ret);
-	//print_stacks(a, b, "ra");
 	free(tmp);
 	free(ret);
 }

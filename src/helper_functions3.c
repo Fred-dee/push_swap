@@ -12,7 +12,7 @@
 
 #include <push_swap.h>
 
-void	flag_check(t_flags *flag)
+void		flag_check(t_flags *flag)
 {
 	if (flag->v > 0)
 	{
@@ -24,7 +24,7 @@ void	flag_check(t_flags *flag)
 			ft_putstr_clr(LIGHT_GREEN, "Colour mode enabled.\n");
 		else
 			ft_putstr_clr(LIGHT_RED, "Colour mode requires -v to be set.\n");
-	}	
+	}
 }
 
 static void	help_1(t_stack *a, char **ret)
