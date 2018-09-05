@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H_
-# define PUSH_SWAP_H_
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 # include "stack.h"
 # include "get_next_line.h"
 # define MAX_INT 2147483647
@@ -50,7 +50,8 @@ void			revrotate_r(t_stack *a, t_stack *b);
 void			print_stacks(t_stack *a, t_stack *b, char *str);
 void			print_stacks_clr(t_stack *a, t_stack *b, char *str);
 void			print_single(char const *colour, t_list *head, int value);
-void			print_rest(t_list *head_a, t_list *head_b, t_list *aterm, t_list *bterm);
+void			print_rest(t_list *head_a, t_list *head_b,
+				t_list *aterm, t_list *bterm);
 int				rotate_print(t_list *head_a, t_list *head_b, char *str);
 int				is_valid(int ac, char *av[]);
 int				is_sorted(t_list *head);

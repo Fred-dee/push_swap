@@ -75,7 +75,7 @@ void	meat(t_stack *a, t_stack *b, char **ret, t_rank *rank)
 {
 	if (rank->dir_a == 0 && rank->dir_b == 0)
 		apply_rotr(a, b, rank, ret);
-	else if (rank->dir_a == 1 && rank->dir_b == 0)
+	else if (rank->dir_a == 1 && rank->dir_b == 1)
 		apply_revrotr(a, b, rank, ret);
 	else
 	{
