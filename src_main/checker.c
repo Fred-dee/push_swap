@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include <push_swap.h>
 
 static void	select_move(t_stack *a, t_stack *b, char *str)
 {
@@ -57,8 +57,7 @@ static void	read_apply(t_stack *a, t_stack *b, t_flags *f)
 			print_stacks_clr(a, b, str);
 		ft_strdel(&str);
 	}
-	if (str != NULL)
-		ft_strdel(&str);
+	ft_strdel(&str);
 }
 
 static int	work(int count, char **av, t_stack *a)

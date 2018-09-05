@@ -100,6 +100,7 @@ int		is_valid(int ac, char *av[])
 	int		tmp;
 	char	*str;
 	int		arr[ac];
+	char	*itoa;
 
 	tmp = ac;
 	while (tmp >= 0)
@@ -108,14 +109,16 @@ int		is_valid(int ac, char *av[])
 		if (*str == '-' || *str == '+')
 			str++;
 		while (*str != '\0')
-		{
-			if (ft_isdigit(*str) == FALSE)
+			if (ft_isdigit(*str++) == FALSE)
 				return (FALSE);
-			str++;
-		}
 		arr[tmp] = ft_atoi(av[tmp]);
-		if (ft_strcmp(ft_itoa(arr[tmp]), av[tmp]) != 0)
+		itoa = ft_itoa(arr[tmp]);
+		if (ft_strcmp(itoa, av[tmp]) != 0)
+		{
+			ft_strdel(&itoa);
 			return (FALSE);
+		}
+		ft_strdel(&itoa);
 		tmp--;
 	}
 	return (duplicates(ac, arr));
