@@ -76,4 +76,5 @@ void			apply_rotb(t_stack *b, char **ret, t_rank *rank, int count);
 void			apply_rotr(t_stack *a, t_stack *b, t_rank *rank, char **ret);
 void			apply_revrotr(t_stack *a, t_stack *b, t_rank *rank, char **ret);
 void			final_rotates(t_stack *b, char **ret);
+void			r_p_help2(t_list *head_a, t_list *head_b, char colour[4][8]);
 #endif

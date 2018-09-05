@@ -12,6 +12,21 @@
 
 #include <push_swap.h>
 
+void	r_p_help(t_list **head_a, t_list **head_b, char colour[4][8])
+{
+	if (*head_a != NULL)
+	{
+		print_single(colour[0], *head_b, *((int *)head_a[0]->content));
+		*head_a = head_a[0]->next;
+	}
+	if (*head_b != NULL)
+	{
+		print_single(colour[1], *head_a, *((int *)head_b[0]->content));
+		*head_b = head_b[0]->next;
+		ft_putchar('\n');
+	}
+}
+
 int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 {
 	char	colour[4][8];
@@ -21,17 +36,7 @@ int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 	tail_a = ft_lstgettail(head_a);
 	tail_b = ft_lstgettail(head_b);
 	set_rotate_colour(colour, str);
-	if (head_a != NULL)
-	{
-		print_single(colour[0], head_b, *((int *)head_a->content));
-		head_a = head_a->next;
-	}
-	if (head_b != NULL)
-	{
-		print_single(colour[1], head_a, *((int *)head_b->content));
-		head_b = head_b->next;
-		ft_putchar('\n');
-	}
+	r_p_help(&head_a, &head_b, colour);
 	while (head_b != NULL && head_a != NULL &&
 		head_b != tail_b && head_a != tail_a)
 	{
@@ -41,18 +46,7 @@ int		rotate_print(t_list *head_a, t_list *head_b, char *str)
 		head_b = head_b->next;
 		ft_putchar('\n');
 	}
-	if (head_a != tail_a && head_b == NULL)
-		print_rest(head_a, head_b, tail_a, NULL);
-	else if (head_b != tail_b && head_a == NULL)
-		print_rest(head_a, head_b, NULL, tail_b);
-	if (tail_a != NULL && head_a != NULL)
-		print_single(colour[2], tail_b, *((int *)tail_a->content));
-	if (tail_b != NULL && head_b != NULL)
-	{
-		ft_putstr("\t");
-		print_single(colour[3], tail_a, *((int *)tail_b->content));
-	}
-	ft_putendl("\n_\t_\na\tb");
+	r_p_help2(head_a, head_b, colour);
 	return (1);
 }
 
